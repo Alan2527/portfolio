@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio QA — Alan Herrera</title>
+<meta name="description" content="Portfolio de proyectos de testing QA: automatización con Selenium y Pytest, testing de APIs, regresión visual y documentación completa de ciclos de prueba.">
+<style>
+  :root {
+    --azul: #4a90d9;
+    --azul-claro: #7db4e8;
+    --fondo: #0f1f33;
+    --tarjeta: #1b3450;
+    --borde: #2a4666;
+    --texto: #e8eef5;
+    --texto-suave: #9fb8d0;
+    --verde: #34d399;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--fondo); color: var(--texto); line-height: 1.6; }
+  a { color: var(--azul-claro); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header { border-bottom: 1px solid var(--borde); }
+  header .inner { max-width: 1000px; margin: 0 auto; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .marca { font-size: 1.15rem; font-weight: 700; }
+  .marca span { color: var(--azul); font-weight: 600; }
+  .enlaces { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.92rem; }
+
+  main { max-width: 1000px; margin: 0 auto; padding: 50px 24px 70px; }
+  .titulo { font-size: 2rem; margin-bottom: 6px; }
+  .subtitulo { color: var(--texto-suave); margin-bottom: 36px; }
+  .linea { width: 46px; height: 4px; background: var(--azul); border-radius: 2px; margin: 10px 0 34px; }
+
+  section + section { margin-top: 56px; }
+  .titulo-seccion { font-size: 1.3rem; margin-bottom: 4px; }
+  .subtitulo-seccion { color: var(--texto-suave); font-size: 0.92rem; margin-bottom: 24px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .proyecto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 26px; display: flex; flex-direction: column; }
+  .proyecto.destacado { grid-column: 1 / -1; }
+  .tag { display: inline-block; width: fit-content; background: rgba(74,144,217,0.18); color: var(--azul-claro); font-size: 0.76rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 12px; border-radius: 999px; margin-bottom: 12px; }
+  .proyecto h2 { font-size: 1.25rem; margin-bottom: 10px; }
+  .proyecto p { color: var(--texto-suave); font-size: 0.95rem; margin-bottom: 14px; }
+  .artefactos { list-style: none; margin-bottom: 16px; }
+  .artefactos li { color: var(--texto-suave); font-size: 0.92rem; padding: 3px 0 3px 22px; position: relative; }
+  .artefactos li::before { content: "✓"; color: var(--azul); position: absolute; left: 0; font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .chip { background: rgba(74,144,217,0.14); border: 1px solid rgba(74,144,217,0.35); padding: 3px 11px; border-radius: 999px; font-size: 0.8rem; }
+  .btn { margin-top: auto; display: inline-block; width: fit-content; padding: 9px 18px; border-radius: 8px; border: 1.5px solid var(--azul); color: var(--azul-claro); font-weight: 600; font-size: 0.9rem; }
+  .btn:hover { background: rgba(74,144,217,0.12); text-decoration: none; }
+
+  /* Tarjetas de automatización: con captura de pantalla del reporte en vivo */
+  .auto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
+  .proyecto-auto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .captura { position: relative; background: #000; aspect-ratio: 16 / 8; overflow: hidden; }
+  .captura img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .3s; }
+  .proyecto-auto:hover .captura img { transform: scale(1.03); }
+  .captura::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,31,51,0.85), transparent 45%); }
+  .cuerpo-auto { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+  .badge-ci { display: inline-flex; align-items: center; gap: 6px; width: fit-content; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.35); color: var(--verde); font-size: 0.74rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
+  .badge-ci::before { content: "●"; font-size: 0.6rem; }
+  .btn-reporte { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 11px 20px; border-radius: 8px; background: var(--azul); color: #fff; font-weight: 700; font-size: 0.9rem; }
+  .btn-reporte:hover { background: #5c9de3; text-decoration: none; }
+
+  footer { border-top: 1px solid var(--borde); }
+  footer .inner { max-width: 1000px; margin: 0 auto; padding: 26px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--texto-suave); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="marca">Alan Herrera <span>· Sr. QA Analyst</span></div>
+    <div class="enlaces">
+      <a href="mailto:alanherrera2527@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/alan-herrera-15b8a2215" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h1 class="titulo">Proyectos de testing</h1>
+  <div class="linea"></div>
+
+  <section>
+    <h2 class="titulo-seccion">Automatización & herramientas propias</h2>
+    <p class="subtitulo-seccion">Frameworks de testing construidos desde cero, con integración continua y reportes publicados en vivo.</p>
+
+    <div class="auto-grid">
+
+      <div class="proyecto-auto">
+        <div class="captura"><img src="capturas/regresion-visual.jpg" alt="Informe de regresión visual con diferencias marcadas sobre la captura"></div>
+        <div class="cuerpo-auto">
+          <span class="badge-ci">CI activo</span>
+          <h2>Motor de Regresión Visual</h2>
+          <p>Herramienta propia (Selenium + Pillow) que compara dos versiones del mismo sitio elemento por elemento — tamaño, posición, tipografía, color, visibilidad y más — y genera un informe interactivo con cada diferencia resaltada sobre la imagen.</p>
+          <div class="chips"><span class="chip">Selenium</span><span class="chip">Pillow</span><span class="chip">Python</span><span class="chip">GitHub Actions</span></div>
+          <a class="btn-reporte" href="https://alan2527.github.io/regresion-visual/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="titulo-seccion">Ciclos de testing documentados</h2>
+    <p class="subtitulo-seccion">Procesos de QA manual y funcional, con casos de prueba, trazabilidad y reportes de defectos.</p>
+
+    <div class="grid">
+
+      <div class="proyecto destacado">
+        <span class="tag">Proceso QA completo</span>
+        <h2>Demoblaze — E-commerce</h2>
+        <p>Ciclo de testing de punta a punta sobre una tienda online, documentado en cada etapa del proceso:</p>
+        <ul class="artefactos">
+          <li>Historia de usuario y relevamiento de requerimientos</li>
+          <li>Casos de prueba y matriz de trazabilidad requerimiento ↔ caso</li>
+          <li>Ejecución manual y automatizada con Selenium IDE</li>
+          <li>Reportes de fallas con severidad, prioridad y evidencias, gestionados en Jira</li>
+        </ul>
+        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Matriz de trazabilidad</span><span class="chip">Selenium IDE</span><span class="chip">Jira</span><span class="chip">Reporte de defectos</span></div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1SmYT0735P2mb4_J4nP0EK2fI2C4AHRpP" target="_blank" rel="noopener">Ver documentación →</a>
+      </div>
+
+      <div class="proyecto">
+        <span class="tag">Testing funcional</span>
+        <h2>Proyecto Banco Nación</h2>
+        <p>Testing funcional sobre plataforma de home banking.</p>
+        <ul class="artefactos">
+          <li>Historia de usuario y requerimientos</li>
+          <li>Casos de prueba y matriz de trazabilidad</li>
+          <li>Reportes de fallas (documento y planilla de seguimiento)</li>
+        </ul>
+        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Trazabilidad</span><span class="chip">Gestión de defectos</span></div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1mFk1NKGzymdl5iZrpMR73Z9kOqSCW-0G" target="_blank" rel="noopener">Ver documentación →</a>
+      </div>
+
+      <div class="proyecto">
+        <span class="tag">Testing funcional</span>
+        <h2>Proyecto Benza</h2>
+        <p>Diseño y ejecución de pruebas funcionales con documentación completa del ciclo.</p>
+        <ul class="artefactos">
+          <li>Historia de usuario y requerimientos</li>
+          <li>Casos de prueba y matriz de trazabilidad</li>
+          <li>Conclusiones del ciclo de prueba</li>
+        </ul>
+        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Trazabilidad</span><span class="chip">Informe final</span></div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1fw1bo_E9VteV2twIrvW-POsbgBuFRaKp" target="_blank" rel="noopener">Ver documentación →</a>
+      </div>
+
+      <div class="proyecto">
+        <span class="tag">Testing exploratorio y funcional</span>
+        <h2>Test Paikee — App mobile</h2>
+        <p>Testing de aplicación con foco en la detección y documentación de defectos.</p>
+        <ul class="artefactos">
+          <li>Historias de usuario</li>
+          <li>Reporte de bugs detallado</li>
+          <li>Evidencias de ejecución</li>
+        </ul>
+        <div class="chips"><span class="chip">Testing exploratorio</span><span class="chip">Reporte de bugs</span><span class="chip">Evidencias</span></div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1ZgXXRN1g4GjvC5bzoutESeSq4MdwVyht" target="_blank" rel="noopener">Ver documentación →</a>
+      </div>
+
+      <div class="proyecto">
+        <span class="tag">Testing funcional</span>
+        <h2>Klimber</h2>
+        <p>Pruebas funcionales documentadas con sus evidencias de ejecución.</p>
+        <ul class="artefactos">
+          <li>Casos de prueba</li>
+          <li>Reporte de defectos</li>
+          <li>Evidencias de ejecución</li>
+        </ul>
+        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Gestión de defectos</span><span class="chip">Evidencias</span></div>
+        <a class="btn" href="https://drive.google.com/drive/folders/1h-xstDAzhGUkimL1cmwsh0zyEQ-mqQmq" target="_blank" rel="noopener">Ver documentación →</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="inner">
+    <div>© 2026 Alan Herrera</div>
+    <div><a href="mailto:alanherrera2527@gmail.com">alanherrera2527@gmail.com</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
