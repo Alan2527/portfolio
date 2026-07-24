@@ -53,9 +53,12 @@
   /* Tarjetas de automatización: horizontales, captura a la izquierda */
   .auto-grid { display: flex; flex-direction: column; gap: 22px; }
   .proyecto-auto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 42%) minmax(0, 1fr); }
-  .captura { background: #0b1626; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 18px; border-right: 1px solid var(--borde); }
-  .captura img { width: 100%; height: auto; max-height: 100%; object-fit: contain; display: block; border-radius: 8px; transition: transform .3s; }
-  .proyecto-auto:hover .captura img { transform: scale(1.02); }
+  .captura { background: #0b1626; padding: 14px; border-right: 1px solid var(--borde); display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+  .captura img { width: 100%; display: block; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); object-fit: cover; object-position: top; transition: transform .3s; }
+  .captura img.principal { aspect-ratio: 16 / 10; }
+  .captura .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .captura .fila img { aspect-ratio: 16 / 10; }
+  .captura img:hover { transform: scale(1.02); }
   .cuerpo-auto { padding: 26px 28px 28px; display: flex; flex-direction: column; }
   .proyecto-auto p { margin-bottom: 12px; }
   @media (max-width: 720px) {
@@ -119,7 +122,10 @@
     <div class="auto-grid">
 
       <div class="proyecto-auto">
-        <div class="captura"><img src="capturas/regresion-visual.jpg" alt="Informe de regresión visual con diferencias marcadas sobre la captura"></div>
+        <div class="captura">
+          <img class="principal" src="capturas/regresion-visual.jpg" alt="Informe de regresión visual con las diferencias marcadas sobre la captura">
+          <img src="capturas/regresion-visual-2.jpg" alt="Comparación lado a lado entre la versión base y la candidata">
+        </div>
         <div class="cuerpo-auto">
           <span class="badge-ci">CI activo</span>
           <h2>Motor de Regresión Visual</h2>
@@ -131,7 +137,13 @@
       </div>
 
       <div class="proyecto-auto">
-        <div class="captura"><img src="capturas/saucedemo-e2e.jpg" alt="Reporte Allure con el resumen de ejecución de la suite E2E"></div>
+        <div class="captura">
+          <img class="principal" src="capturas/saucedemo-e2e.jpg" alt="Detalle de un test con la captura adjunta a cada paso">
+          <div class="fila">
+            <img src="capturas/saucedemo-e2e-2.jpg" alt="Resumen de ejecución de la suite">
+            <img src="capturas/saucedemo-e2e-3.jpg" alt="Gráficos de estado, severidad y duración">
+          </div>
+        </div>
         <div class="cuerpo-auto">
           <span class="badge-ci">CI activo</span>
           <h2>Suite E2E — SauceDemo</h2>
@@ -143,7 +155,10 @@
       </div>
 
       <div class="proyecto-auto">
-        <div class="captura"><img src="capturas/booker-api-tests.jpg" alt="Reporte Allure de la suite de API con el detalle de request y response"></div>
+        <div class="captura">
+          <img class="principal" src="capturas/booker-api-tests.jpg" alt="Detalle de un caso de API con su request y response">
+          <img src="capturas/booker-api-tests-2.jpg" alt="Resumen de ejecución de la suite de API">
+        </div>
         <div class="cuerpo-auto">
           <span class="badge-ci">CI activo</span>
           <h2>Suite de API — Restful-Booker</h2>
@@ -210,7 +225,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-logo"><img src="https://logo.clearbit.com/utest.com" alt="Logo de uTest" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=utest.com';this.classList.add('favicon')"><span class="monograma">uT</span></div>
+        <div class="exp-logo"><img src="capturas/logos/utest.png" alt="Logo de uTest"><span class="monograma">uT</span></div>
         <div>
           <h3>uTest</h3>
           <div class="puesto">Analista QA</div>
@@ -223,7 +238,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-logo"><img src="https://logo.clearbit.com/enohsa.gob.ar" alt="Logo de ENOHSA" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=enohsa.gob.ar';this.classList.add('favicon')"><span class="monograma">EN</span></div>
+        <div class="exp-logo"><img src="capturas/logos/enohsa.png" alt="Logo de ENOHSA"><span class="monograma">EN</span></div>
         <div>
           <h3>ENOHSA</h3>
           <div class="puesto">Analista QA</div>
