@@ -53,17 +53,14 @@
   /* Tarjetas de automatización: horizontales, captura a la izquierda */
   .auto-grid { display: flex; flex-direction: column; gap: 22px; }
   .proyecto-auto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 42%) minmax(0, 1fr); }
-  .captura { position: relative; background: #000; overflow: hidden; min-height: 100%; }
-  .captura img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; transition: transform .3s; }
-  .proyecto-auto:hover .captura img { transform: scale(1.03); }
-  .captura::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, transparent 70%, rgba(27,52,80,0.55)); }
+  .captura { background: #0b1626; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 18px; border-right: 1px solid var(--borde); }
+  .captura img { width: 100%; height: auto; max-height: 100%; object-fit: contain; display: block; border-radius: 8px; transition: transform .3s; }
+  .proyecto-auto:hover .captura img { transform: scale(1.02); }
   .cuerpo-auto { padding: 26px 28px 28px; display: flex; flex-direction: column; }
   .proyecto-auto p { margin-bottom: 12px; }
   @media (max-width: 720px) {
     .proyecto-auto { grid-template-columns: 1fr; }
-    .captura { aspect-ratio: 16 / 9; min-height: 0; }
-    .captura img { object-position: left top; }
-    .captura::after { background: linear-gradient(to top, rgba(15,31,51,0.85), transparent 45%); }
+    .captura { border-right: none; border-bottom: 1px solid var(--borde); }
   }
   .badge-ci { display: inline-flex; align-items: center; gap: 6px; width: fit-content; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.35); color: var(--verde); font-size: 0.74rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
   .badge-ci::before { content: "●"; font-size: 0.6rem; }
@@ -73,9 +70,10 @@
   /* Experiencia: logo a la izquierda, tareas a la derecha */
   .experiencia { display: flex; flex-direction: column; gap: 18px; }
   .exp { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 24px 26px; display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 24px; align-items: start; }
-  .exp-logo { width: 104px; height: 104px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .exp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
-  .exp-logo .monograma { font-size: 1.9rem; font-weight: 800; letter-spacing: -1px; color: var(--fondo); }
+  .exp-logo { position: relative; width: 104px; height: 104px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .exp-logo img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; padding: 12px; background: #fff; }
+  .exp-logo img.favicon { padding: 22px; }
+  .exp-logo .monograma { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; font-weight: 800; letter-spacing: -1px; color: var(--fondo); }
   .exp h3 { font-size: 1.2rem; margin-bottom: 2px; }
   .exp .puesto { color: var(--azul-claro); font-size: 0.82rem; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 12px; }
   .exp .tareas { list-style: none; }
@@ -166,7 +164,7 @@
     <div class="experiencia">
 
       <div class="exp">
-        <div class="exp-logo"><span class="monograma">AMV</span></div>
+        <div class="exp-logo"><img src="https://logo.clearbit.com/amv.travel" alt="Logo de AMV Travel DMC" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=amv.travel';this.classList.add('favicon')"><span class="monograma">AMV</span></div>
         <div>
           <h3>AMV Travel DMC</h3>
           <div class="puesto">Analista QA Sr.</div>
@@ -181,7 +179,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-logo"><span class="monograma">EP</span></div>
+        <div class="exp-logo"><img src="https://logo.clearbit.com/epidata.net" alt="Logo de Epidata" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=epidata.net';this.classList.add('favicon')"><span class="monograma">EP</span></div>
         <div>
           <h3>Epidata</h3>
           <div class="puesto">Analista QA — Proyecto Artear (Todo Noticias)</div>
@@ -195,7 +193,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-logo"><span class="monograma">PK</span></div>
+        <div class="exp-logo"><img src="https://logo.clearbit.com/pickerexpress.com" alt="Logo de Picker" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=pickerexpress.com';this.classList.add('favicon')"><span class="monograma">PK</span></div>
         <div>
           <h3>Picker (500 B14)</h3>
           <div class="puesto">QA Engineer</div>
@@ -212,7 +210,7 @@
       </div>
 
       <div class="exp">
-        <div class="exp-logo"><span class="monograma">uT</span></div>
+        <div class="exp-logo"><img src="https://logo.clearbit.com/utest.com" alt="Logo de uTest" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=utest.com';this.classList.add('favicon')"><span class="monograma">uT</span></div>
         <div>
           <h3>uTest</h3>
           <div class="puesto">Analista QA</div>
@@ -225,28 +223,15 @@
       </div>
 
       <div class="exp">
-        <div class="exp-logo"><span class="monograma">EN</span></div>
+        <div class="exp-logo"><img src="https://logo.clearbit.com/enohsa.gob.ar" alt="Logo de ENOHSA" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=enohsa.gob.ar';this.classList.add('favicon')"><span class="monograma">EN</span></div>
         <div>
           <h3>ENOHSA</h3>
-          <div class="puesto">Analista QA · Desarrollador full stack</div>
+          <div class="puesto">Analista QA</div>
           <ul class="tareas">
             <li>Testing mobile y desktop: análisis de especificaciones, diseño y ejecución de casos de prueba.</li>
             <li>Documentación y reporte de fallas con sus respectivas evidencias.</li>
             <li>Pruebas funcionales y no funcionales con Selenium, Selenium IDE, JMeter y Postman.</li>
             <li>Gestión del trabajo en Jira bajo metodología Scrum.</li>
-            <li>Desarrollo y mantenimiento del sitio web del organismo.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp">
-        <div class="exp-logo"><span class="monograma">NC</span></div>
-        <div>
-          <h3>No Country</h3>
-          <div class="puesto">Desarrollador Fullstack Junior</div>
-          <ul class="tareas">
-            <li>Desarrollo de un producto de punta a punta dentro de un equipo multidisciplinario simulando un entorno laboral real.</li>
-            <li>Trabajo colaborativo con control de versiones y entregas por sprint.</li>
           </ul>
         </div>
       </div>
@@ -254,54 +239,6 @@
     </div>
   </section>
 
-  <section>
-    <h2 class="titulo-seccion">Ciclos de testing documentados</h2>
-    <p class="subtitulo-seccion">Procesos de QA manual y funcional, con casos de prueba, trazabilidad y reportes de defectos.</p>
-
-    <ol class="lista-proyectos">
-
-      <li>
-        <div class="rol">Proceso QA completo</div>
-        <h3>Demoblaze — E-commerce</h3>
-        <p>Ciclo de testing de punta a punta sobre una tienda online, documentado en cada etapa: relevamiento de requerimientos e historia de usuario, diseño de casos de prueba con matriz de trazabilidad requerimiento ↔ caso, ejecución manual y automatizada con Selenium IDE, y reporte de fallas con severidad, prioridad y evidencias gestionadas en Jira.</p>
-        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Matriz de trazabilidad</span><span class="chip">Selenium IDE</span><span class="chip">Jira</span><span class="chip">Reporte de defectos</span></div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1SmYT0735P2mb4_J4nP0EK2fI2C4AHRpP" target="_blank" rel="noopener">Ver documentación →</a>
-      </li>
-
-      <li>
-        <div class="rol">Testing funcional</div>
-        <h3>Proyecto Banco Nación</h3>
-        <p>Testing funcional sobre plataforma de home banking, con historia de usuario y requerimientos relevados, casos de prueba y matriz de trazabilidad, y reportes de fallas documentados tanto en informe como en planilla de seguimiento.</p>
-        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Trazabilidad</span><span class="chip">Gestión de defectos</span></div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1mFk1NKGzymdl5iZrpMR73Z9kOqSCW-0G" target="_blank" rel="noopener">Ver documentación →</a>
-      </li>
-
-      <li>
-        <div class="rol">Testing funcional</div>
-        <h3>Proyecto Benza</h3>
-        <p>Diseño y ejecución de pruebas funcionales con documentación completa del ciclo: historia de usuario y requerimientos, casos de prueba con su matriz de trazabilidad, y conclusiones finales del ciclo de prueba.</p>
-        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Trazabilidad</span><span class="chip">Informe final</span></div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1fw1bo_E9VteV2twIrvW-POsbgBuFRaKp" target="_blank" rel="noopener">Ver documentación →</a>
-      </li>
-
-      <li>
-        <div class="rol">Testing exploratorio y funcional</div>
-        <h3>Test Paikee — App mobile</h3>
-        <p>Testing de aplicación mobile con foco en la detección y documentación de defectos: historias de usuario relevadas, reporte de bugs detallado y evidencias de ejecución que respaldan cada hallazgo.</p>
-        <div class="chips"><span class="chip">Testing exploratorio</span><span class="chip">Reporte de bugs</span><span class="chip">Evidencias</span></div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1ZgXXRN1g4GjvC5bzoutESeSq4MdwVyht" target="_blank" rel="noopener">Ver documentación →</a>
-      </li>
-
-      <li>
-        <div class="rol">Testing funcional</div>
-        <h3>Klimber</h3>
-        <p>Pruebas funcionales documentadas end-to-end, con diseño de casos de prueba, reporte de defectos y evidencias de ejecución adjuntas a cada caso.</p>
-        <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Gestión de defectos</span><span class="chip">Evidencias</span></div>
-        <a class="btn" href="https://drive.google.com/drive/folders/1h-xstDAzhGUkimL1cmwsh0zyEQ-mqQmq" target="_blank" rel="noopener">Ver documentación →</a>
-      </li>
-
-    </ol>
-  </section>
 </main>
 
 <footer>
