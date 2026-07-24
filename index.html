@@ -50,18 +50,49 @@
   .btn { margin-top: auto; display: inline-block; width: fit-content; padding: 9px 18px; border-radius: 8px; border: 1.5px solid var(--azul); color: var(--azul-claro); font-weight: 600; font-size: 0.9rem; }
   .btn:hover { background: rgba(74,144,217,0.12); text-decoration: none; }
 
-  /* Tarjetas de automatización: con captura de pantalla del reporte en vivo */
-  .auto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
-  .proyecto-auto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
-  .captura { position: relative; background: #000; aspect-ratio: 16 / 8; overflow: hidden; }
-  .captura img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .3s; }
+  /* Tarjetas de automatización: horizontales, captura a la izquierda */
+  .auto-grid { display: flex; flex-direction: column; gap: 22px; }
+  .proyecto-auto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 42%) minmax(0, 1fr); }
+  .captura { position: relative; background: #000; overflow: hidden; min-height: 100%; }
+  .captura img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; transition: transform .3s; }
   .proyecto-auto:hover .captura img { transform: scale(1.03); }
-  .captura::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,31,51,0.85), transparent 45%); }
-  .cuerpo-auto { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+  .captura::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, transparent 70%, rgba(27,52,80,0.55)); }
+  .cuerpo-auto { padding: 26px 28px 28px; display: flex; flex-direction: column; }
+  .proyecto-auto p { margin-bottom: 12px; }
+  @media (max-width: 720px) {
+    .proyecto-auto { grid-template-columns: 1fr; }
+    .captura { aspect-ratio: 16 / 9; min-height: 0; }
+    .captura img { object-position: left top; }
+    .captura::after { background: linear-gradient(to top, rgba(15,31,51,0.85), transparent 45%); }
+  }
   .badge-ci { display: inline-flex; align-items: center; gap: 6px; width: fit-content; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.35); color: var(--verde); font-size: 0.74rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
   .badge-ci::before { content: "●"; font-size: 0.6rem; }
   .btn-reporte { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 11px 20px; border-radius: 8px; background: var(--azul); color: #fff; font-weight: 700; font-size: 0.9rem; }
   .btn-reporte:hover { background: #5c9de3; text-decoration: none; }
+
+  /* Experiencia: logo a la izquierda, tareas a la derecha */
+  .experiencia { display: flex; flex-direction: column; gap: 18px; }
+  .exp { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 24px 26px; display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .exp-logo { width: 104px; height: 104px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .exp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+  .exp-logo .monograma { font-size: 1.9rem; font-weight: 800; letter-spacing: -1px; color: var(--fondo); }
+  .exp h3 { font-size: 1.2rem; margin-bottom: 2px; }
+  .exp .puesto { color: var(--azul-claro); font-size: 0.82rem; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 12px; }
+  .exp .tareas { list-style: none; }
+  .exp .tareas li { color: var(--texto-suave); font-size: 0.94rem; padding: 4px 0 4px 20px; position: relative; }
+  .exp .tareas li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 6px; height: 6px; border-radius: 50%; background: var(--azul); }
+  @media (max-width: 640px) {
+    .exp { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  /* Lista numerada de proyectos documentados */
+  .lista-proyectos { list-style: none; counter-reset: proyecto; display: flex; flex-direction: column; gap: 14px; }
+  .lista-proyectos > li { counter-increment: proyecto; position: relative; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 20px 24px 22px 66px; }
+  .lista-proyectos > li::before { content: counter(proyecto); position: absolute; left: 22px; top: 20px; width: 30px; height: 30px; border-radius: 8px; background: rgba(74,144,217,0.18); color: var(--azul-claro); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; }
+  .lista-proyectos h3 { font-size: 1.1rem; margin-bottom: 2px; }
+  .lista-proyectos .rol { color: var(--azul-claro); font-size: 0.8rem; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 8px; }
+  .lista-proyectos p { color: var(--texto-suave); font-size: 0.94rem; margin-bottom: 12px; }
+  .lista-proyectos .chips { margin-bottom: 14px; }
 
   footer { border-top: 1px solid var(--borde); }
   footer .inner { max-width: 1000px; margin: 0 auto; padding: 26px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--texto-suave); font-size: 0.85rem; }
@@ -94,7 +125,8 @@
         <div class="cuerpo-auto">
           <span class="badge-ci">CI activo</span>
           <h2>Motor de Regresión Visual</h2>
-          <p>Herramienta propia (Selenium + Pillow) que compara dos versiones del mismo sitio elemento por elemento — tamaño, posición, tipografía, color, visibilidad y más — y genera un informe interactivo con cada diferencia resaltada sobre la imagen.</p>
+          <p>Herramienta propia construida desde cero con Selenium y Pillow que detecta regresiones visuales entre dos versiones del mismo sitio. En vez de comparar píxel contra píxel — que genera falsos positivos con cualquier diferencia de renderizado — recorre el DOM y compara elemento por elemento su geometría y sus estilos computados.</p>
+          <p>Clasifica cada diferencia encontrada en nueve categorías (tamaño, posición, tipografía, color, visibilidad, apilamiento, interactividad, recorte y contenido) y trabaja con tolerancia 0px, de modo que ningún desplazamiento pase inadvertido. El informe resultante es interactivo: al hacer clic en una diferencia de la lista, se resalta el elemento exacto sobre la captura, y muestra lado a lado la versión base contra la candidata.</p>
           <div class="chips"><span class="chip">Selenium</span><span class="chip">Pillow</span><span class="chip">Python</span><span class="chip">GitHub Actions</span></div>
           <a class="btn-reporte" href="https://alan2527.github.io/regresion-visual/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
         </div>
@@ -105,7 +137,8 @@
         <div class="cuerpo-auto">
           <span class="badge-ci">CI activo</span>
           <h2>Suite E2E — SauceDemo</h2>
-          <p>Suite de automatización end-to-end con Selenium y Pytest sobre login, catálogo, carrito y checkout, organizada por área funcional. Incluye captura de pantalla en cada paso (también al fallar) y auditoría de defectos conocidos con xfail documentado.</p>
+          <p>Suite de regresión funcional end-to-end con Selenium y Pytest que cubre 17 casos sobre autenticación, catálogo, carrito y flujo de compra. Está organizada por área funcional en lugar de un único directorio de tests, con asignación automática de marcadores según la carpeta, lo que permite ejecutar una suite puntual desde el pipeline sin tocar código.</p>
+          <p>Cada paso de cada test adjunta su propia captura de pantalla al reporte, incluso cuando el paso falla a mitad de camino, de modo que el diagnóstico de una falla no depende de reproducirla localmente. Incluye además una auditoría de defectos conocidos con <em>xfail</em> estricto: los bugs plantados quedan documentados en el reporte sin romper el pipeline, y si alguno se corrige, la suite avisa.</p>
           <div class="chips"><span class="chip">Selenium</span><span class="chip">Pytest</span><span class="chip">Allure</span><span class="chip">GitHub Actions</span></div>
           <a class="btn-reporte" href="https://alan2527.github.io/saucedemo-e2e/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
         </div>
@@ -116,9 +149,105 @@
         <div class="cuerpo-auto">
           <span class="badge-ci">CI activo</span>
           <h2>Suite de API — Restful-Booker</h2>
-          <p>Pruebas de API REST sobre una API pública de reservas, con cliente HTTP encapsulado, validación de contrato contra esquemas JSON y limpieza garantizada de datos de prueba. Documenta los comportamientos no estándar de la API para que la suite avise si cambian.</p>
+          <p>Suite de 13 casos sobre una API REST pública de reservas, cubriendo salud y autenticación, creación y lectura, y actualización y borrado. El plumbing HTTP está encapsulado en un cliente propio, de modo que los tests expresan qué se valida y no cómo se arma cada request.</p>
+          <p>Las respuestas se validan contra esquemas JSON — estructura, tipos y formatos de fecha — y no solo contra valores puntuales, lo que detecta cambios de contrato que un assert sobre un campo dejaría pasar. Cada reserva de prueba se elimina al terminar aunque el test falle, y los comportamientos no estándar de la API (el <code>DELETE</code> responde 201, las credenciales inválidas responden 200) quedan fijados con asserts documentados: si algún día se corrigen, la suite avisa.</p>
           <div class="chips"><span class="chip">Python</span><span class="chip">Pytest</span><span class="chip">requests</span><span class="chip">jsonschema</span><span class="chip">Allure</span></div>
           <a class="btn-reporte" href="https://alan2527.github.io/booker-api-tests/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="titulo-seccion">Experiencia</h2>
+    <p class="subtitulo-seccion">Empresas y equipos en los que trabajé, y de qué me ocupé en cada uno.</p>
+
+    <div class="experiencia">
+
+      <div class="exp">
+        <div class="exp-logo"><span class="monograma">AMV</span></div>
+        <div>
+          <h3>AMV Travel DMC</h3>
+          <div class="puesto">Analista QA Sr.</div>
+          <ul class="tareas">
+            <li>Diseño y mantenimiento de la suite de regresión funcional automatizada sobre los entornos de preproducción.</li>
+            <li>Automatización end-to-end de los flujos críticos del back office, la web pública y el panel de administración.</li>
+            <li>Reportes de ejecución con evidencia por paso, publicados automáticamente para todo el equipo.</li>
+            <li>Validación de datos y consultas directas sobre la base con Microsoft SQL Server.</li>
+            <li>Gestión del ciclo de trabajo y seguimiento de defectos en Azure DevOps.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-logo"><span class="monograma">EP</span></div>
+        <div>
+          <h3>Epidata</h3>
+          <div class="puesto">Analista QA — Proyecto Artear (Todo Noticias)</div>
+          <ul class="tareas">
+            <li>Testing mobile y desktop sobre los productos digitales del cliente.</li>
+            <li>Análisis de especificaciones y diseño de casos de prueba a partir de los requerimientos.</li>
+            <li>Ejecución de los casos y documentación de resultados.</li>
+            <li>Reporte de fallas con sus respectivas evidencias.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-logo"><span class="monograma">PK</span></div>
+        <div>
+          <h3>Picker (500 B14)</h3>
+          <div class="puesto">QA Engineer</div>
+          <ul class="tareas">
+            <li>Combinación de pruebas automatizadas y manuales para cubrir la funcionalidad del sistema de forma eficiente sin comprometer la calidad.</li>
+            <li>Automatización y mantenimiento de suites de pruebas integrales, con mentalidad de mejora continua.</li>
+            <li>Reporte detallado de defectos al equipo, colaborando con el PM en la priorización del backlog.</li>
+            <li>Trabajo junto a diseñadores y PM para traducir la visión del producto en pruebas concretas.</li>
+            <li>Identificación temprana de áreas de riesgo en nuevas soluciones, en conjunto con los equipos de desarrollo.</li>
+            <li>Ejecución de pruebas en entornos productivos post-implementación, junto a TI y operaciones.</li>
+            <li>Participación activa en las ceremonias de Scrum, aportando aclaraciones y desbloqueando al equipo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-logo"><span class="monograma">uT</span></div>
+        <div>
+          <h3>uTest</h3>
+          <div class="puesto">Analista QA</div>
+          <ul class="tareas">
+            <li>Análisis de especificaciones y diseño de casos de prueba.</li>
+            <li>Ejecución de los casos diseñados sobre productos de distintos clientes.</li>
+            <li>Pruebas de servicios con SoapUI.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-logo"><span class="monograma">EN</span></div>
+        <div>
+          <h3>ENOHSA</h3>
+          <div class="puesto">Analista QA · Desarrollador full stack</div>
+          <ul class="tareas">
+            <li>Testing mobile y desktop: análisis de especificaciones, diseño y ejecución de casos de prueba.</li>
+            <li>Documentación y reporte de fallas con sus respectivas evidencias.</li>
+            <li>Pruebas funcionales y no funcionales con Selenium, Selenium IDE, JMeter y Postman.</li>
+            <li>Gestión del trabajo en Jira bajo metodología Scrum.</li>
+            <li>Desarrollo y mantenimiento del sitio web del organismo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-logo"><span class="monograma">NC</span></div>
+        <div>
+          <h3>No Country</h3>
+          <div class="puesto">Desarrollador Fullstack Junior</div>
+          <ul class="tareas">
+            <li>Desarrollo de un producto de punta a punta dentro de un equipo multidisciplinario simulando un entorno laboral real.</li>
+            <li>Trabajo colaborativo con control de versiones y entregas por sprint.</li>
+          </ul>
         </div>
       </div>
 
@@ -129,75 +258,49 @@
     <h2 class="titulo-seccion">Ciclos de testing documentados</h2>
     <p class="subtitulo-seccion">Procesos de QA manual y funcional, con casos de prueba, trazabilidad y reportes de defectos.</p>
 
-    <div class="grid">
+    <ol class="lista-proyectos">
 
-      <div class="proyecto destacado">
-        <span class="tag">Proceso QA completo</span>
-        <h2>Demoblaze — E-commerce</h2>
-        <p>Ciclo de testing de punta a punta sobre una tienda online, documentado en cada etapa del proceso:</p>
-        <ul class="artefactos">
-          <li>Historia de usuario y relevamiento de requerimientos</li>
-          <li>Casos de prueba y matriz de trazabilidad requerimiento ↔ caso</li>
-          <li>Ejecución manual y automatizada con Selenium IDE</li>
-          <li>Reportes de fallas con severidad, prioridad y evidencias, gestionados en Jira</li>
-        </ul>
+      <li>
+        <div class="rol">Proceso QA completo</div>
+        <h3>Demoblaze — E-commerce</h3>
+        <p>Ciclo de testing de punta a punta sobre una tienda online, documentado en cada etapa: relevamiento de requerimientos e historia de usuario, diseño de casos de prueba con matriz de trazabilidad requerimiento ↔ caso, ejecución manual y automatizada con Selenium IDE, y reporte de fallas con severidad, prioridad y evidencias gestionadas en Jira.</p>
         <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Matriz de trazabilidad</span><span class="chip">Selenium IDE</span><span class="chip">Jira</span><span class="chip">Reporte de defectos</span></div>
         <a class="btn" href="https://drive.google.com/drive/folders/1SmYT0735P2mb4_J4nP0EK2fI2C4AHRpP" target="_blank" rel="noopener">Ver documentación →</a>
-      </div>
+      </li>
 
-      <div class="proyecto">
-        <span class="tag">Testing funcional</span>
-        <h2>Proyecto Banco Nación</h2>
-        <p>Testing funcional sobre plataforma de home banking.</p>
-        <ul class="artefactos">
-          <li>Historia de usuario y requerimientos</li>
-          <li>Casos de prueba y matriz de trazabilidad</li>
-          <li>Reportes de fallas (documento y planilla de seguimiento)</li>
-        </ul>
+      <li>
+        <div class="rol">Testing funcional</div>
+        <h3>Proyecto Banco Nación</h3>
+        <p>Testing funcional sobre plataforma de home banking, con historia de usuario y requerimientos relevados, casos de prueba y matriz de trazabilidad, y reportes de fallas documentados tanto en informe como en planilla de seguimiento.</p>
         <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Trazabilidad</span><span class="chip">Gestión de defectos</span></div>
         <a class="btn" href="https://drive.google.com/drive/folders/1mFk1NKGzymdl5iZrpMR73Z9kOqSCW-0G" target="_blank" rel="noopener">Ver documentación →</a>
-      </div>
+      </li>
 
-      <div class="proyecto">
-        <span class="tag">Testing funcional</span>
-        <h2>Proyecto Benza</h2>
-        <p>Diseño y ejecución de pruebas funcionales con documentación completa del ciclo.</p>
-        <ul class="artefactos">
-          <li>Historia de usuario y requerimientos</li>
-          <li>Casos de prueba y matriz de trazabilidad</li>
-          <li>Conclusiones del ciclo de prueba</li>
-        </ul>
+      <li>
+        <div class="rol">Testing funcional</div>
+        <h3>Proyecto Benza</h3>
+        <p>Diseño y ejecución de pruebas funcionales con documentación completa del ciclo: historia de usuario y requerimientos, casos de prueba con su matriz de trazabilidad, y conclusiones finales del ciclo de prueba.</p>
         <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Trazabilidad</span><span class="chip">Informe final</span></div>
         <a class="btn" href="https://drive.google.com/drive/folders/1fw1bo_E9VteV2twIrvW-POsbgBuFRaKp" target="_blank" rel="noopener">Ver documentación →</a>
-      </div>
+      </li>
 
-      <div class="proyecto">
-        <span class="tag">Testing exploratorio y funcional</span>
-        <h2>Test Paikee — App mobile</h2>
-        <p>Testing de aplicación con foco en la detección y documentación de defectos.</p>
-        <ul class="artefactos">
-          <li>Historias de usuario</li>
-          <li>Reporte de bugs detallado</li>
-          <li>Evidencias de ejecución</li>
-        </ul>
+      <li>
+        <div class="rol">Testing exploratorio y funcional</div>
+        <h3>Test Paikee — App mobile</h3>
+        <p>Testing de aplicación mobile con foco en la detección y documentación de defectos: historias de usuario relevadas, reporte de bugs detallado y evidencias de ejecución que respaldan cada hallazgo.</p>
         <div class="chips"><span class="chip">Testing exploratorio</span><span class="chip">Reporte de bugs</span><span class="chip">Evidencias</span></div>
         <a class="btn" href="https://drive.google.com/drive/folders/1ZgXXRN1g4GjvC5bzoutESeSq4MdwVyht" target="_blank" rel="noopener">Ver documentación →</a>
-      </div>
+      </li>
 
-      <div class="proyecto">
-        <span class="tag">Testing funcional</span>
-        <h2>Klimber</h2>
-        <p>Pruebas funcionales documentadas con sus evidencias de ejecución.</p>
-        <ul class="artefactos">
-          <li>Casos de prueba</li>
-          <li>Reporte de defectos</li>
-          <li>Evidencias de ejecución</li>
-        </ul>
+      <li>
+        <div class="rol">Testing funcional</div>
+        <h3>Klimber</h3>
+        <p>Pruebas funcionales documentadas end-to-end, con diseño de casos de prueba, reporte de defectos y evidencias de ejecución adjuntas a cada caso.</p>
         <div class="chips"><span class="chip">Casos de prueba</span><span class="chip">Gestión de defectos</span><span class="chip">Evidencias</span></div>
         <a class="btn" href="https://drive.google.com/drive/folders/1h-xstDAzhGUkimL1cmwsh0zyEQ-mqQmq" target="_blank" rel="noopener">Ver documentación →</a>
-      </div>
+      </li>
 
-    </div>
+    </ol>
   </section>
 </main>
 
