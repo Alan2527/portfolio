@@ -3,265 +3,613 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio QA — Alan Herrera</title>
-<meta name="description" content="Portfolio de proyectos de testing QA: automatización con Selenium y Pytest, testing de APIs, regresión visual y documentación completa de ciclos de prueba.">
+<title>Alan Herrera — Sr. QA Analyst | Automatización, APIs y Regresión Visual</title>
+<meta name="description" content="Sr. QA Analyst con 5+ años de experiencia en testing funcional, automatización con Selenium y Pytest, testing de APIs y herramientas propias de regresión visual. Reportes de ejecución publicados en vivo.">
+<meta name="author" content="Alan Herrera">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alan Herrera — Sr. QA Analyst">
+<meta property="og:description" content="Portfolio de QA: frameworks propios de automatización, testing de APIs y regresión visual, con reportes de ejecución publicados en vivo.">
+<meta property="og:image" content="https://alan2527.github.io/portfolio/capturas/regresion-visual.jpg">
+<meta property="og:url" content="https://alan2527.github.io/portfolio/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f1f33'/><text x='50' y='68' font-size='54' font-family='Segoe UI,sans-serif' font-weight='700' fill='%234a90d9' text-anchor='middle'>QA</text></svg>">
+
 <style>
   :root {
     --azul: #4a90d9;
     --azul-claro: #7db4e8;
-    --fondo: #0f1f33;
-    --tarjeta: #1b3450;
+    --fondo: #0c192b;
+    --fondo-alt: #0f1f33;
+    --tarjeta: #162c46;
+    --tarjeta-alt: #1b3450;
     --borde: #2a4666;
     --texto: #e8eef5;
     --texto-suave: #9fb8d0;
     --verde: #34d399;
+    --ambar: #fbbf24;
+    --rojo: #f87171;
+    --ancho: 1060px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--fondo); color: var(--texto); line-height: 1.6; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--fondo); color: var(--texto); line-height: 1.65; -webkit-font-smoothing: antialiased; }
   a { color: var(--azul-claro); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  .inner { max-width: var(--ancho); margin: 0 auto; padding: 0 24px; }
 
-  header { border-bottom: 1px solid var(--borde); }
-  header .inner { max-width: 1000px; margin: 0 auto; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-  .marca { font-size: 1.15rem; font-weight: 700; }
-  .marca span { color: var(--azul); font-weight: 600; }
-  .enlaces { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.92rem; }
+  /* ---------- NAV ---------- */
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(12,25,43,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); }
+  nav .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 62px; }
+  .marca { font-weight: 700; font-size: 1rem; white-space: nowrap; }
+  .marca span { color: var(--azul); }
+  .nav-links { display: flex; gap: 22px; font-size: 0.88rem; }
+  .nav-links a { color: var(--texto-suave); }
+  .nav-links a:hover { color: var(--texto); text-decoration: none; }
+  .nav-cv { background: var(--azul); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 8px 16px; border-radius: 8px; white-space: nowrap; }
+  .nav-cv:hover { background: #5c9de3; text-decoration: none; }
+  @media (max-width: 860px) { .nav-links { display: none; } }
 
-  main { max-width: 1000px; margin: 0 auto; padding: 50px 24px 70px; }
-  .titulo { font-size: 2rem; margin-bottom: 6px; }
-  .subtitulo { color: var(--texto-suave); margin-bottom: 36px; }
-  .linea { width: 46px; height: 4px; background: var(--azul); border-radius: 2px; margin: 10px 0 34px; }
+  /* ---------- HERO ---------- */
+  .hero { border-bottom: 1px solid var(--borde); background:
+      radial-gradient(900px 380px at 15% -10%, rgba(74,144,217,0.16), transparent 70%),
+      radial-gradient(700px 320px at 90% 0%, rgba(52,211,153,0.08), transparent 70%); }
+  .hero .inner { padding-top: 68px; padding-bottom: 54px; }
+  .disponible { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; letter-spacing: .4px; text-transform: uppercase; color: var(--verde); background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.3); padding: 5px 13px; border-radius: 999px; margin-bottom: 22px; }
+  .disponible::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 3px rgba(52,211,153,0.25); }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 3.9rem); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 12px; }
+  .hero .rol { font-size: clamp(1.05rem, 2.4vw, 1.4rem); color: var(--azul-claro); font-weight: 600; margin-bottom: 20px; }
+  .hero .pitch { color: var(--texto-suave); font-size: 1.04rem; max-width: 68ch; margin-bottom: 28px; }
+  .hero .pitch strong { color: var(--texto); font-weight: 600; }
+  .acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 42px; }
+  .btn-primario, .btn-secundario { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 9px; font-weight: 700; font-size: 0.93rem; }
+  .btn-primario { background: var(--azul); color: #fff; }
+  .btn-primario:hover { background: #5c9de3; text-decoration: none; }
+  .btn-secundario { border: 1.5px solid var(--borde); color: var(--texto); }
+  .btn-secundario:hover { border-color: var(--azul); background: rgba(74,144,217,0.08); text-decoration: none; }
 
-  section + section { margin-top: 56px; }
-  .titulo-seccion { font-size: 1.3rem; margin-bottom: 4px; }
-  .subtitulo-seccion { color: var(--texto-suave); font-size: 0.92rem; margin-bottom: 24px; }
+  .empresas { border-top: 1px solid var(--borde); padding-top: 26px; }
+  .empresas .rotulo { font-size: 0.72rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 16px; }
+  .tira-logos { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .tira-logos .logo-chip { width: 74px; height: 44px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 6px; opacity: .82; transition: opacity .2s; }
+  .tira-logos .logo-chip:hover { opacity: 1; }
+  .tira-logos img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  .proyecto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 26px; display: flex; flex-direction: column; }
-  .proyecto.destacado { grid-column: 1 / -1; }
-  .tag { display: inline-block; width: fit-content; background: rgba(74,144,217,0.18); color: var(--azul-claro); font-size: 0.76rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 12px; border-radius: 999px; margin-bottom: 12px; }
-  .proyecto h2 { font-size: 1.25rem; margin-bottom: 10px; }
-  .proyecto p { color: var(--texto-suave); font-size: 0.95rem; margin-bottom: 14px; }
-  .artefactos { list-style: none; margin-bottom: 16px; }
-  .artefactos li { color: var(--texto-suave); font-size: 0.92rem; padding: 3px 0 3px 22px; position: relative; }
-  .artefactos li::before { content: "✓"; color: var(--azul); position: absolute; left: 0; font-weight: 700; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-  .chip { background: rgba(74,144,217,0.14); border: 1px solid rgba(74,144,217,0.35); padding: 3px 11px; border-radius: 999px; font-size: 0.8rem; }
-  .btn { margin-top: auto; display: inline-block; width: fit-content; padding: 9px 18px; border-radius: 8px; border: 1.5px solid var(--azul); color: var(--azul-claro); font-weight: 600; font-size: 0.9rem; }
-  .btn:hover { background: rgba(74,144,217,0.12); text-decoration: none; }
+  /* ---------- MÉTRICAS ---------- */
+  .metricas { background: var(--fondo-alt); border-bottom: 1px solid var(--borde); }
+  .metricas .inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-top: 30px; padding-bottom: 30px; }
+  .metrica .n { font-size: clamp(1.6rem, 3.4vw, 2.15rem); font-weight: 800; letter-spacing: -1px; color: var(--azul-claro); line-height: 1.1; }
+  .metrica .t { font-size: 0.83rem; color: var(--texto-suave); }
+  @media (max-width: 640px) { .metricas .inner { grid-template-columns: repeat(2, 1fr); } }
 
-  /* Tarjetas de automatización: horizontales, captura a la izquierda */
-  .auto-grid { display: flex; flex-direction: column; gap: 22px; }
-  .proyecto-auto { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 42%) minmax(0, 1fr); }
-  .captura { background: #0b1626; padding: 14px; border-right: 1px solid var(--borde); display: flex; flex-direction: column; gap: 10px; justify-content: center; }
-  .captura img { width: 100%; display: block; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); object-fit: cover; object-position: top; transition: transform .3s; }
-  .captura img.principal { aspect-ratio: 16 / 10; }
-  .captura .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .captura .fila img { aspect-ratio: 16 / 10; }
-  .captura img:hover { transform: scale(1.02); }
-  .cuerpo-auto { padding: 26px 28px 28px; display: flex; flex-direction: column; }
-  .proyecto-auto p { margin-bottom: 12px; }
-  @media (max-width: 720px) {
-    .proyecto-auto { grid-template-columns: 1fr; }
-    .captura { border-right: none; border-bottom: 1px solid var(--borde); }
-  }
-  .badge-ci { display: inline-flex; align-items: center; gap: 6px; width: fit-content; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.35); color: var(--verde); font-size: 0.74rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
-  .badge-ci::before { content: "●"; font-size: 0.6rem; }
-  .btn-reporte { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 11px 20px; border-radius: 8px; background: var(--azul); color: #fff; font-weight: 700; font-size: 0.9rem; }
+  /* ---------- SECCIONES ---------- */
+  section.bloque { padding: 66px 0; border-bottom: 1px solid var(--borde); }
+  .encabezado { margin-bottom: 32px; }
+  .encabezado .kicker { font-size: 0.74rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--azul); font-weight: 700; margin-bottom: 8px; }
+  .encabezado h2 { font-size: clamp(1.5rem, 3.2vw, 1.95rem); letter-spacing: -0.6px; margin-bottom: 8px; }
+  .encabezado p { color: var(--texto-suave); font-size: 0.97rem; max-width: 76ch; }
+
+  /* ---------- STACK ---------- */
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: 16px; }
+  .stack-col { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 20px 22px; }
+  .stack-col h3 { font-size: 0.92rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .stack-col h3 .pip { width: 9px; height: 9px; border-radius: 50%; }
+  .nivel-alto .pip { background: var(--verde); }
+  .nivel-medio .pip { background: var(--azul); }
+  .nivel-base .pip { background: var(--texto-suave); }
+  .stack-col ul { list-style: none; display: flex; flex-wrap: wrap; gap: 7px; }
+  .stack-col li { font-size: 0.85rem; background: rgba(74,144,217,0.12); border: 1px solid rgba(74,144,217,0.28); padding: 4px 11px; border-radius: 999px; color: var(--texto); }
+  .nota-nivel { color: var(--texto-suave); font-size: 0.84rem; margin-top: 16px; }
+
+  /* ---------- PROYECTOS ---------- */
+  .proyectos { display: flex; flex-direction: column; gap: 24px; }
+  .proy { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 45%) minmax(0, 1fr); }
+  .proy-media { background: #091320; padding: 16px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid var(--borde); }
+  .shot { position: relative; display: block; border-radius: 9px; overflow: hidden; border: 1px solid rgba(255,255,255,0.09); cursor: zoom-in; }
+  .shot img { width: 100%; display: block; object-fit: cover; object-position: top; aspect-ratio: 16 / 10; transition: transform .35s; }
+  .shot:hover img { transform: scale(1.04); }
+  .shot .cap { position: absolute; left: 0; right: 0; bottom: 0; font-size: 0.68rem; letter-spacing: .4px; text-transform: uppercase; font-weight: 700; color: #fff; background: linear-gradient(to top, rgba(9,19,32,0.94), transparent); padding: 16px 10px 6px; }
+  .shot-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .proy-cuerpo { padding: 26px 28px 28px; display: flex; flex-direction: column; }
+  .badge-ci { display: inline-flex; align-items: center; gap: 6px; width: fit-content; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.34); color: var(--verde); font-size: 0.72rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+  .badge-ci::before { content: "●"; font-size: 0.55rem; }
+  .proy-cuerpo h3 { font-size: 1.32rem; letter-spacing: -0.4px; margin-bottom: 10px; }
+  .proy-cuerpo p { color: var(--texto-suave); font-size: 0.95rem; margin-bottom: 16px; }
+  .destacados { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+  .destacados div { background: rgba(74,144,217,0.09); border: 1px solid rgba(74,144,217,0.22); border-radius: 9px; padding: 10px 12px; }
+  .destacados b { display: block; font-size: 1.12rem; color: var(--azul-claro); letter-spacing: -0.3px; }
+  .destacados span { font-size: 0.75rem; color: var(--texto-suave); line-height: 1.35; display: block; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+  .chip { background: rgba(255,255,255,0.05); border: 1px solid var(--borde); padding: 3px 11px; border-radius: 999px; font-size: 0.79rem; color: var(--texto-suave); }
+  .btn-reporte { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 11px 20px; border-radius: 9px; background: var(--azul); color: #fff; font-weight: 700; font-size: 0.9rem; }
   .btn-reporte:hover { background: #5c9de3; text-decoration: none; }
-
-  /* Experiencia: logo a la izquierda, tareas a la derecha */
-  .experiencia { display: flex; flex-direction: column; gap: 18px; }
-  .exp { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 24px 26px; display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 24px; align-items: start; }
-  .exp-logo { position: relative; width: 104px; height: 104px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .exp-logo img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; padding: 12px; background: #fff; }
-  .exp-logo img.favicon { padding: 22px; }
-  .exp-logo .monograma { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; font-weight: 800; letter-spacing: -1px; color: var(--fondo); }
-  .exp h3 { font-size: 1.2rem; margin-bottom: 2px; }
-  .exp .puesto { color: var(--azul-claro); font-size: 0.82rem; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 12px; }
-  .exp .tareas { list-style: none; }
-  .exp .tareas li { color: var(--texto-suave); font-size: 0.94rem; padding: 4px 0 4px 20px; position: relative; }
-  .exp .tareas li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 6px; height: 6px; border-radius: 50%; background: var(--azul); }
-  @media (max-width: 640px) {
-    .exp { grid-template-columns: 1fr; gap: 16px; }
+  @media (max-width: 780px) {
+    .proy { grid-template-columns: 1fr; }
+    .proy-media { border-right: none; border-bottom: 1px solid var(--borde); }
+    .destacados { grid-template-columns: 1fr; }
   }
 
-  /* Lista numerada de proyectos documentados */
-  .lista-proyectos { list-style: none; counter-reset: proyecto; display: flex; flex-direction: column; gap: 14px; }
-  .lista-proyectos > li { counter-increment: proyecto; position: relative; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 20px 24px 22px 66px; }
-  .lista-proyectos > li::before { content: counter(proyecto); position: absolute; left: 22px; top: 20px; width: 30px; height: 30px; border-radius: 8px; background: rgba(74,144,217,0.18); color: var(--azul-claro); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; }
-  .lista-proyectos h3 { font-size: 1.1rem; margin-bottom: 2px; }
-  .lista-proyectos .rol { color: var(--azul-claro); font-size: 0.8rem; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 8px; }
-  .lista-proyectos p { color: var(--texto-suave); font-size: 0.94rem; margin-bottom: 12px; }
-  .lista-proyectos .chips { margin-bottom: 14px; }
+  /* ---------- BUGS ---------- */
+  .bugs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .bug { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 13px; overflow: hidden; display: flex; flex-direction: column; }
+  .bug-cab { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 18px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--borde); }
+  .bug-id { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.78rem; color: var(--texto-suave); }
+  .sev { font-size: 0.7rem; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+  .sev-critica { color: var(--rojo); background: rgba(248,113,113,0.13); border: 1px solid rgba(248,113,113,0.35); }
+  .sev-media { color: var(--ambar); background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.34); }
+  .bug-cuerpo { padding: 18px; display: flex; flex-direction: column; flex: 1; }
+  .bug-cuerpo h3 { font-size: 1rem; line-height: 1.4; margin-bottom: 12px; }
+  .bug-campo { margin-bottom: 12px; }
+  .bug-campo .et { font-size: 0.68rem; letter-spacing: 1.1px; text-transform: uppercase; color: var(--azul); font-weight: 700; margin-bottom: 4px; }
+  .bug-campo p, .bug-campo ol { color: var(--texto-suave); font-size: 0.87rem; }
+  .bug-campo ol { padding-left: 18px; }
+  .bug-comparacion { display: grid; gap: 8px; margin-bottom: 14px; }
+  .bug-comparacion > div { padding: 9px 12px; border-radius: 8px; font-size: 0.85rem; }
+  .esperado { background: rgba(52,211,153,0.08); border-left: 3px solid var(--verde); }
+  .obtenido { background: rgba(248,113,113,0.08); border-left: 3px solid var(--rojo); }
+  .bug-comparacion .et2 { display: block; font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; }
+  .esperado .et2 { color: var(--verde); }
+  .obtenido .et2 { color: var(--rojo); }
+  .bug-pie { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--borde); font-size: 0.82rem; color: var(--texto-suave); }
+  .bug-pie code { font-family: ui-monospace, Consolas, monospace; font-size: 0.79rem; color: var(--azul-claro); }
+
+  /* ---------- EXPERIENCIA ---------- */
+  .experiencia { display: flex; flex-direction: column; gap: 18px; }
+  .exp { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 14px; padding: 24px 26px; display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .exp-logo { position: relative; width: 92px; height: 92px; border-radius: 11px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .exp-logo img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; padding: 11px; background: #fff; }
+  .exp-logo img.favicon { padding: 20px; }
+  .exp-logo .monograma { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 800; color: var(--fondo); }
+  .exp-cab { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .exp h3 { font-size: 1.16rem; letter-spacing: -0.3px; }
+  .exp .periodo { font-size: 0.82rem; color: var(--texto-suave); white-space: nowrap; }
+  .exp .puesto { color: var(--azul-claro); font-size: 0.81rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 6px; }
+  .exp .contexto { font-size: 0.82rem; color: var(--texto-suave); margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp .contexto span { background: rgba(255,255,255,0.05); border: 1px solid var(--borde); padding: 2px 9px; border-radius: 999px; }
+  .tareas { list-style: none; }
+  .tareas li { color: var(--texto-suave); font-size: 0.93rem; padding: 4px 0 4px 19px; position: relative; }
+  .tareas li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 5px; height: 5px; border-radius: 50%; background: var(--azul); }
+  @media (max-width: 620px) { .exp { grid-template-columns: 1fr; gap: 16px; } }
+
+  /* ---------- CIERRE ---------- */
+  .cierre { padding: 74px 0; text-align: center; background:
+      radial-gradient(700px 300px at 50% 0%, rgba(74,144,217,0.14), transparent 70%); }
+  .cierre h2 { font-size: clamp(1.6rem, 3.6vw, 2.2rem); letter-spacing: -0.8px; margin-bottom: 12px; }
+  .cierre p { color: var(--texto-suave); max-width: 58ch; margin: 0 auto 28px; }
+  .cierre .acciones { justify-content: center; margin-bottom: 0; }
 
   footer { border-top: 1px solid var(--borde); }
-  footer .inner { max-width: 1000px; margin: 0 auto; padding: 26px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--texto-suave); font-size: 0.85rem; }
+  footer .inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 24px; padding-bottom: 24px; color: var(--texto-suave); font-size: 0.84rem; }
+
+  /* ---------- LIGHTBOX ---------- */
+  #lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(6,12,22,0.94); display: none; align-items: center; justify-content: center; padding: 30px; cursor: zoom-out; }
+  #lightbox.abierto { display: flex; }
+  #lightbox img { max-width: 100%; max-height: 100%; border-radius: 10px; border: 1px solid var(--borde); }
+  #lightbox .cerrar { position: absolute; top: 18px; right: 24px; font-size: 2rem; color: var(--texto-suave); line-height: 1; }
 </style>
 </head>
 <body>
 
-<header>
+<nav>
   <div class="inner">
-    <div class="marca">Alan Herrera <span>· Sr. QA Analyst</span></div>
-    <div class="enlaces">
-      <a href="mailto:alanherrera2527@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/alan-herrera-15b8a2215" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="marca">Alan Herrera <span>· QA</span></div>
+    <div class="nav-links">
+      <a href="#stack">Stack</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#bugs">Bugs detectados</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="nav-cv" href="Alan-Herrera-QA-CV.pdf" download>Descargar CV</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="inner">
+    <div class="disponible">Abierto a nuevas oportunidades</div>
+    <h1>Alan Herrera</h1>
+    <div class="rol">Sr. QA Analyst · Automatización, APIs y Regresión Visual</div>
+    <p class="pitch">Más de <strong>5 años</strong> asegurando la calidad de productos web y mobile en banca, turismo, medios y e-commerce. Trabajo con <strong>Selenium y Pytest</strong> sobre pipelines de CI, diseño <strong>suites de API con validación de contrato</strong> y construí desde cero un <strong>motor de regresión visual</strong> propio. Cada proyecto de acá abajo tiene su reporte de ejecución publicado en vivo: nada de capturas viejas, resultados reales que podés abrir ahora.</p>
+    <div class="acciones">
+      <a class="btn-primario" href="#proyectos">Ver proyectos →</a>
+      <a class="btn-secundario" href="Alan-Herrera-QA-CV.pdf" download>Descargar CV (PDF)</a>
+      <a class="btn-secundario" href="https://www.linkedin.com/in/alan-herrera-15b8a2215" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="empresas">
+      <div class="rotulo">Experiencia en</div>
+      <div class="tira-logos">
+        <div class="logo-chip"><img src="https://logo.clearbit.com/amv.travel" alt="AMV Travel DMC" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=amv.travel'"></div>
+        <div class="logo-chip"><img src="https://logo.clearbit.com/epidata.net" alt="Epidata" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=epidata.net'"></div>
+        <div class="logo-chip"><img src="https://logo.clearbit.com/pickerexpress.com" alt="Picker" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=pickerexpress.com'"></div>
+        <div class="logo-chip"><img src="capturas/logos/utest.png" alt="uTest"></div>
+        <div class="logo-chip"><img src="capturas/logos/enohsa.png" alt="ENOHSA"></div>
+      </div>
     </div>
   </div>
 </header>
 
+<div class="metricas">
+  <div class="inner">
+    <div class="metrica"><div class="n">5+</div><div class="t">años en QA</div></div>
+    <div class="metrica"><div class="n">30</div><div class="t">casos automatizados en CI</div></div>
+    <div class="metrica"><div class="n">3</div><div class="t">frameworks propios</div></div>
+    <div class="metrica"><div class="n">6</div><div class="t">empresas y equipos</div></div>
+  </div>
+</div>
+
 <main>
-  <h1 class="titulo">Proyectos de testing</h1>
-  <div class="linea"></div>
 
-  <section>
-    <h2 class="titulo-seccion">Automatización & herramientas propias</h2>
-    <p class="subtitulo-seccion">Frameworks de testing construidos desde cero, con integración continua y reportes publicados en vivo.</p>
-
-    <div class="auto-grid">
-
-      <div class="proyecto-auto">
-        <div class="captura">
-          <img class="principal" src="capturas/regresion-visual.jpg" alt="Informe de regresión visual con las diferencias marcadas sobre la captura">
-          <img src="capturas/regresion-visual-2.jpg" alt="Comparación lado a lado entre la versión base y la candidata">
+  <section class="bloque" id="stack">
+    <div class="inner">
+      <div class="encabezado">
+        <div class="kicker">Stack técnico</div>
+        <h2>Herramientas, agrupadas por nivel real</h2>
+        <p>Separadas con criterio honesto: uso diario y capacidad de enseñarlo, trabajo autónomo, o uso puntual con documentación a mano.</p>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-col nivel-alto">
+          <h3><span class="pip"></span>Uso diario · puedo enseñarlo</h3>
+          <ul>
+            <li>Python</li><li>Selenium</li><li>Pytest</li><li>Allure</li>
+            <li>Postman</li><li>Testing funcional</li><li>Casos de prueba</li>
+            <li>Reporte de defectos</li><li>Jira</li><li>Scrum</li>
+          </ul>
         </div>
-        <div class="cuerpo-auto">
-          <span class="badge-ci">CI activo</span>
-          <h2>Motor de Regresión Visual</h2>
-          <p>Herramienta propia construida desde cero con Selenium y Pillow que detecta regresiones visuales entre dos versiones del mismo sitio. En vez de comparar píxel contra píxel — que genera falsos positivos con cualquier diferencia de renderizado — recorre el DOM y compara elemento por elemento su geometría y sus estilos computados.</p>
-          <p>Clasifica cada diferencia encontrada en nueve categorías (tamaño, posición, tipografía, color, visibilidad, apilamiento, interactividad, recorte y contenido) y trabaja con tolerancia 0px, de modo que ningún desplazamiento pase inadvertido. El informe resultante es interactivo: al hacer clic en una diferencia de la lista, se resalta el elemento exacto sobre la captura, y muestra lado a lado la versión base contra la candidata.</p>
-          <div class="chips"><span class="chip">Selenium</span><span class="chip">Pillow</span><span class="chip">Python</span><span class="chip">GitHub Actions</span></div>
-          <a class="btn-reporte" href="https://alan2527.github.io/regresion-visual/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
+        <div class="stack-col nivel-medio">
+          <h3><span class="pip"></span>Trabajo autónomo</h3>
+          <ul>
+            <li>GitHub Actions</li><li>Azure DevOps</li><li>SQL Server</li>
+            <li>Testing de APIs</li><li>jsonschema</li><li>Git</li>
+            <li>Selenium IDE</li><li>Testing mobile</li><li>Matriz de trazabilidad</li>
+          </ul>
+        </div>
+        <div class="stack-col nivel-base">
+          <h3><span class="pip"></span>Uso puntual</h3>
+          <ul>
+            <li>JMeter</li><li>SoapUI</li><li>Pillow</li><li>HTML / CSS</li><li>JavaScript</li>
+          </ul>
         </div>
       </div>
-
-      <div class="proyecto-auto">
-        <div class="captura">
-          <img class="principal" src="capturas/saucedemo-e2e.jpg" alt="Detalle de un test con la captura adjunta a cada paso">
-          <div class="fila">
-            <img src="capturas/saucedemo-e2e-2.jpg" alt="Resumen de ejecución de la suite">
-            <img src="capturas/saucedemo-e2e-3.jpg" alt="Gráficos de estado, severidad y duración">
-          </div>
-        </div>
-        <div class="cuerpo-auto">
-          <span class="badge-ci">CI activo</span>
-          <h2>Suite E2E — SauceDemo</h2>
-          <p>Suite de regresión funcional end-to-end con Selenium y Pytest que cubre 17 casos sobre autenticación, catálogo, carrito y flujo de compra. Está organizada por área funcional en lugar de un único directorio de tests, con asignación automática de marcadores según la carpeta, lo que permite ejecutar una suite puntual desde el pipeline sin tocar código.</p>
-          <p>Cada paso de cada test adjunta su propia captura de pantalla al reporte, incluso cuando el paso falla a mitad de camino, de modo que el diagnóstico de una falla no depende de reproducirla localmente. Incluye además una auditoría de defectos conocidos con <em>xfail</em> estricto: los bugs plantados quedan documentados en el reporte sin romper el pipeline, y si alguno se corrige, la suite avisa.</p>
-          <div class="chips"><span class="chip">Selenium</span><span class="chip">Pytest</span><span class="chip">Allure</span><span class="chip">GitHub Actions</span></div>
-          <a class="btn-reporte" href="https://alan2527.github.io/saucedemo-e2e/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
-        </div>
-      </div>
-
-      <div class="proyecto-auto">
-        <div class="captura">
-          <img class="principal" src="capturas/booker-api-tests.jpg" alt="Detalle de un caso de API con su request y response">
-          <img src="capturas/booker-api-tests-2.jpg" alt="Resumen de ejecución de la suite de API">
-        </div>
-        <div class="cuerpo-auto">
-          <span class="badge-ci">CI activo</span>
-          <h2>Suite de API — Restful-Booker</h2>
-          <p>Suite de 13 casos sobre una API REST pública de reservas, cubriendo salud y autenticación, creación y lectura, y actualización y borrado. El plumbing HTTP está encapsulado en un cliente propio, de modo que los tests expresan qué se valida y no cómo se arma cada request.</p>
-          <p>Las respuestas se validan contra esquemas JSON — estructura, tipos y formatos de fecha — y no solo contra valores puntuales, lo que detecta cambios de contrato que un assert sobre un campo dejaría pasar. Cada reserva de prueba se elimina al terminar aunque el test falle, y los comportamientos no estándar de la API (el <code>DELETE</code> responde 201, las credenciales inválidas responden 200) quedan fijados con asserts documentados: si algún día se corrigen, la suite avisa.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Pytest</span><span class="chip">requests</span><span class="chip">jsonschema</span><span class="chip">Allure</span></div>
-          <a class="btn-reporte" href="https://alan2527.github.io/booker-api-tests/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
-        </div>
-      </div>
-
+      <p class="nota-nivel">Todo lo listado en la primera columna está respaldado por código público en los proyectos de abajo.</p>
     </div>
   </section>
 
-  <section>
-    <h2 class="titulo-seccion">Experiencia</h2>
-    <p class="subtitulo-seccion">Empresas y equipos en los que trabajé, y de qué me ocupé en cada uno.</p>
-
-    <div class="experiencia">
-
-      <div class="exp">
-        <div class="exp-logo"><img src="https://logo.clearbit.com/amv.travel" alt="Logo de AMV Travel DMC" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=amv.travel';this.classList.add('favicon')"><span class="monograma">AMV</span></div>
-        <div>
-          <h3>AMV Travel DMC</h3>
-          <div class="puesto">Analista QA Sr.</div>
-          <ul class="tareas">
-            <li>Diseño y mantenimiento de la suite de regresión funcional automatizada sobre los entornos de preproducción.</li>
-            <li>Automatización end-to-end de los flujos críticos del back office, la web pública y el panel de administración.</li>
-            <li>Reportes de ejecución con evidencia por paso, publicados automáticamente para todo el equipo.</li>
-            <li>Validación de datos y consultas directas sobre la base con Microsoft SQL Server.</li>
-            <li>Gestión del ciclo de trabajo y seguimiento de defectos en Azure DevOps.</li>
-          </ul>
-        </div>
+  <section class="bloque" id="proyectos">
+    <div class="inner">
+      <div class="encabezado">
+        <div class="kicker">Automatización</div>
+        <h2>Frameworks propios con reportes en vivo</h2>
+        <p>Tres proyectos construidos desde cero, cada uno con su pipeline de integración continua y su reporte de ejecución publicado. Hacé clic en cualquier captura para verla en grande.</p>
       </div>
 
-      <div class="exp">
-        <div class="exp-logo"><img src="https://logo.clearbit.com/epidata.net" alt="Logo de Epidata" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=epidata.net';this.classList.add('favicon')"><span class="monograma">EP</span></div>
-        <div>
-          <h3>Epidata</h3>
-          <div class="puesto">Analista QA — Proyecto Artear (Todo Noticias)</div>
-          <ul class="tareas">
-            <li>Testing mobile y desktop sobre los productos digitales del cliente.</li>
-            <li>Análisis de especificaciones y diseño de casos de prueba a partir de los requerimientos.</li>
-            <li>Ejecución de los casos y documentación de resultados.</li>
-            <li>Reporte de fallas con sus respectivas evidencias.</li>
-          </ul>
-        </div>
+      <div class="proyectos">
+
+        <article class="proy">
+          <div class="proy-media">
+            <a class="shot" href="capturas/regresion-visual.jpg" data-lightbox>
+              <img src="capturas/regresion-visual.jpg" alt="Informe de regresión visual con las diferencias marcadas sobre la captura">
+              <span class="cap">Diferencias marcadas por elemento</span>
+            </a>
+            <a class="shot" href="capturas/regresion-visual-2.jpg" data-lightbox>
+              <img src="capturas/regresion-visual-2.jpg" alt="Comparación lado a lado entre la versión base y la candidata">
+              <span class="cap">Base vs. candidata</span>
+            </a>
+          </div>
+          <div class="proy-cuerpo">
+            <span class="badge-ci">CI activo</span>
+            <h3>Motor de Regresión Visual</h3>
+            <p>Herramienta propia (Selenium + Pillow) que detecta regresiones visuales entre dos versiones del mismo sitio. En vez de comparar píxel contra píxel — que genera falsos positivos con cualquier diferencia de renderizado — recorre el DOM y compara elemento por elemento su geometría y sus estilos computados, clasificando cada diferencia por tipo. El informe es interactivo: al hacer clic en una diferencia se resalta el elemento exacto sobre la captura.</p>
+            <div class="destacados">
+              <div><b>9</b><span>categorías de diferencia</span></div>
+              <div><b>0px</b><span>de tolerancia</span></div>
+              <div><b>0</b><span>falsos positivos por render</span></div>
+            </div>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Selenium</span><span class="chip">Pillow</span><span class="chip">GitHub Actions</span></div>
+            <a class="btn-reporte" href="https://alan2527.github.io/regresion-visual/" target="_blank" rel="noopener">Ver informe en vivo →</a>
+          </div>
+        </article>
+
+        <article class="proy">
+          <div class="proy-media">
+            <a class="shot" href="capturas/saucedemo-e2e.jpg" data-lightbox>
+              <img src="capturas/saucedemo-e2e.jpg" alt="Detalle de un test con la captura adjunta a cada paso">
+              <span class="cap">Captura por paso, también al fallar</span>
+            </a>
+            <div class="shot-fila">
+              <a class="shot" href="capturas/saucedemo-e2e-2.jpg" data-lightbox>
+                <img src="capturas/saucedemo-e2e-2.jpg" alt="Resumen de ejecución de la suite">
+                <span class="cap">Resumen</span>
+              </a>
+              <a class="shot" href="capturas/saucedemo-e2e-3.jpg" data-lightbox>
+                <img src="capturas/saucedemo-e2e-3.jpg" alt="Gráficos de estado, severidad y duración">
+                <span class="cap">Gráficos</span>
+              </a>
+            </div>
+          </div>
+          <div class="proy-cuerpo">
+            <span class="badge-ci">CI activo</span>
+            <h3>Suite de regresión E2E — SauceDemo</h3>
+            <p>Regresión funcional end-to-end sobre autenticación, catálogo, carrito y flujo de compra. Está organizada por área funcional en lugar de un único directorio, con asignación automática de marcadores según la carpeta, así se puede ejecutar una suite puntual desde el pipeline sin tocar código. Cada paso adjunta su propia captura al reporte incluso si falla a mitad de camino, de modo que diagnosticar una falla no exige reproducirla localmente.</p>
+            <div class="destacados">
+              <div><b>17</b><span>casos en 5 áreas</span></div>
+              <div><b>100%</b><span>de pasos con evidencia</span></div>
+              <div><b>3</b><span>defectos documentados</span></div>
+            </div>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Selenium</span><span class="chip">Pytest</span><span class="chip">Allure</span><span class="chip">GitHub Actions</span></div>
+            <a class="btn-reporte" href="https://alan2527.github.io/saucedemo-e2e/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
+          </div>
+        </article>
+
+        <article class="proy">
+          <div class="proy-media">
+            <a class="shot" href="capturas/booker-api-tests.jpg" data-lightbox>
+              <img src="capturas/booker-api-tests.jpg" alt="Detalle de un caso de API con su request y response">
+              <span class="cap">Request y response de cada caso</span>
+            </a>
+            <a class="shot" href="capturas/booker-api-tests-2.jpg" data-lightbox>
+              <img src="capturas/booker-api-tests-2.jpg" alt="Resumen de ejecución de la suite de API">
+              <span class="cap">Resumen por historia de usuario</span>
+            </a>
+          </div>
+          <div class="proy-cuerpo">
+            <span class="badge-ci">CI activo · smoke semanal</span>
+            <h3>Suite de API — Restful-Booker</h3>
+            <p>Pruebas sobre una API REST de reservas, cubriendo salud y autenticación, creación y lectura, y actualización y borrado. El plumbing HTTP está encapsulado en un cliente propio para que los tests expresen qué se valida y no cómo se arma cada request. Las respuestas se verifican contra esquemas JSON — estructura, tipos y formatos de fecha — lo que detecta cambios de contrato que un assert sobre un campo dejaría pasar.</p>
+            <div class="destacados">
+              <div><b>13</b><span>casos en 3 áreas</span></div>
+              <div><b>2</b><span>quirks de la API fijados</span></div>
+              <div><b>0</b><span>datos de prueba huérfanos</span></div>
+            </div>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Pytest</span><span class="chip">requests</span><span class="chip">jsonschema</span><span class="chip">Allure</span></div>
+            <a class="btn-reporte" href="https://alan2527.github.io/booker-api-tests/" target="_blank" rel="noopener">Ver reporte en vivo →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="bugs">
+    <div class="inner">
+      <div class="encabezado">
+        <div class="kicker">Detección de defectos</div>
+        <h2>Bugs reales encontrados por estas suites</h2>
+        <p>Defectos que mis propias suites detectan hoy, documentados como los reportaría en un equipo. Todos son verificables: cada uno indica el test que lo expone, y podés abrir el reporte en vivo para ver la evidencia.</p>
       </div>
 
-      <div class="exp">
-        <div class="exp-logo"><img src="https://logo.clearbit.com/pickerexpress.com" alt="Logo de Picker" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=pickerexpress.com';this.classList.add('favicon')"><span class="monograma">PK</span></div>
-        <div>
-          <h3>Picker (500 B14)</h3>
-          <div class="puesto">QA Engineer</div>
-          <ul class="tareas">
-            <li>Combinación de pruebas automatizadas y manuales para cubrir la funcionalidad del sistema de forma eficiente sin comprometer la calidad.</li>
-            <li>Automatización y mantenimiento de suites de pruebas integrales, con mentalidad de mejora continua.</li>
-            <li>Reporte detallado de defectos al equipo, colaborando con el PM en la priorización del backlog.</li>
-            <li>Trabajo junto a diseñadores y PM para traducir la visión del producto en pruebas concretas.</li>
-            <li>Identificación temprana de áreas de riesgo en nuevas soluciones, en conjunto con los equipos de desarrollo.</li>
-            <li>Ejecución de pruebas en entornos productivos post-implementación, junto a TI y operaciones.</li>
-            <li>Participación activa en las ceremonias de Scrum, aportando aclaraciones y desbloqueando al equipo.</li>
-          </ul>
-        </div>
+      <div class="bugs">
+
+        <article class="bug">
+          <div class="bug-cab">
+            <span class="bug-id">BUG-01 · Catálogo</span>
+            <span class="sev sev-critica">Severidad crítica</span>
+          </div>
+          <div class="bug-cuerpo">
+            <h3>Todos los productos del catálogo muestran la misma imagen para un perfil de usuario específico</h3>
+            <div class="bug-campo">
+              <div class="et">Pasos para reproducir</div>
+              <ol>
+                <li>Iniciar sesión con el usuario <code>problem_user</code>.</li>
+                <li>Observar la grilla de productos del inventario.</li>
+                <li>Comparar el atributo <code>src</code> de las 6 imágenes.</li>
+              </ol>
+            </div>
+            <div class="bug-comparacion">
+              <div class="esperado"><span class="et2">Esperado</span>Cada producto muestra su propia imagen; las 6 URLs son distintas.</div>
+              <div class="obtenido"><span class="et2">Obtenido</span>Las 6 imágenes apuntan a la misma URL, un recurso inexistente.</div>
+            </div>
+            <div class="bug-pie">Detectado por <code>test_imagenes_unicas</code> · marcado <code>xfail</code> estricto: si el bug se corrige, el pipeline avisa.</div>
+          </div>
+        </article>
+
+        <article class="bug">
+          <div class="bug-cab">
+            <span class="bug-id">BUG-02 · Checkout</span>
+            <span class="sev sev-critica">Severidad crítica</span>
+          </div>
+          <div class="bug-cuerpo">
+            <h3>El campo Apellido del checkout no retiene el valor ingresado y bloquea la compra</h3>
+            <div class="bug-campo">
+              <div class="et">Pasos para reproducir</div>
+              <ol>
+                <li>Iniciar sesión con el usuario <code>problem_user</code>.</li>
+                <li>Agregar un producto al carrito y avanzar al checkout.</li>
+                <li>Completar Nombre, Apellido y Código Postal con datos válidos.</li>
+                <li>Confirmar para avanzar al resumen.</li>
+              </ol>
+            </div>
+            <div class="bug-comparacion">
+              <div class="esperado"><span class="et2">Esperado</span>Con los tres campos válidos, el flujo avanza al resumen con el total de la compra.</div>
+              <div class="obtenido"><span class="et2">Obtenido</span>El campo Apellido se vacía al escribir y el flujo queda bloqueado sin avanzar.</div>
+            </div>
+            <div class="bug-pie">Detectado por <code>test_apellido_en_checkout</code> · impide completar la compra: bloqueante para el negocio.</div>
+          </div>
+        </article>
+
+        <article class="bug">
+          <div class="bug-cab">
+            <span class="bug-id">BUG-03 · Ordenamiento</span>
+            <span class="sev sev-media">Severidad media</span>
+          </div>
+          <div class="bug-cuerpo">
+            <h3>El selector de ordenamiento del catálogo no reordena los productos</h3>
+            <div class="bug-campo">
+              <div class="et">Pasos para reproducir</div>
+              <ol>
+                <li>Iniciar sesión con el usuario <code>problem_user</code>.</li>
+                <li>En el catálogo, elegir la opción de orden <em>Name (Z to A)</em>.</li>
+                <li>Leer los nombres de los productos en el orden renderizado.</li>
+              </ol>
+            </div>
+            <div class="bug-comparacion">
+              <div class="esperado"><span class="et2">Esperado</span>El listado queda en orden alfabético descendente real.</div>
+              <div class="obtenido"><span class="et2">Obtenido</span>El orden no cambia; el selector no tiene efecto sobre la grilla.</div>
+            </div>
+            <div class="bug-pie">Detectado por <code>test_ordenamiento</code> · la validación compara el listado renderizado contra su versión ordenada.</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="experiencia">
+    <div class="inner">
+      <div class="encabezado">
+        <div class="kicker">Trayectoria</div>
+        <h2>Experiencia como QA</h2>
+        <p>Seis equipos, en industrias con exigencias muy distintas: banca, turismo receptivo, medios, logística y obra pública.</p>
       </div>
 
-      <div class="exp">
-        <div class="exp-logo"><img src="capturas/logos/utest.png" alt="Logo de uTest"><span class="monograma">uT</span></div>
-        <div>
-          <h3>uTest</h3>
-          <div class="puesto">Analista QA</div>
-          <ul class="tareas">
-            <li>Análisis de especificaciones y diseño de casos de prueba.</li>
-            <li>Ejecución de los casos diseñados sobre productos de distintos clientes.</li>
-            <li>Pruebas de servicios con SoapUI.</li>
-          </ul>
-        </div>
-      </div>
+      <div class="experiencia">
 
-      <div class="exp">
-        <div class="exp-logo"><img src="capturas/logos/enohsa.png" alt="Logo de ENOHSA"><span class="monograma">EN</span></div>
-        <div>
-          <h3>ENOHSA</h3>
-          <div class="puesto">Analista QA</div>
-          <ul class="tareas">
-            <li>Testing mobile y desktop: análisis de especificaciones, diseño y ejecución de casos de prueba.</li>
-            <li>Documentación y reporte de fallas con sus respectivas evidencias.</li>
-            <li>Pruebas funcionales y no funcionales con Selenium, Selenium IDE, JMeter y Postman.</li>
-            <li>Gestión del trabajo en Jira bajo metodología Scrum.</li>
-          </ul>
+        <div class="exp">
+          <div class="exp-logo">
+            <img src="https://logo.clearbit.com/amv.travel" alt="Logo de AMV Travel DMC" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=amv.travel';this.classList.add('favicon')">
+            <span class="monograma">AMV</span>
+          </div>
+          <div>
+            <div class="exp-cab">
+              <h3>AMV Travel DMC</h3>
+              <div class="periodo">feb. 2026 – actualidad</div>
+            </div>
+            <div class="puesto">Analista QA Sr.</div>
+            <div class="contexto"><span>Turismo receptivo</span><span>Híbrido</span><span>Scrum</span></div>
+            <ul class="tareas">
+              <li>Diseño y mantenimiento de la suite de regresión funcional automatizada sobre los entornos de preproducción.</li>
+              <li>Automatización end-to-end de los flujos críticos del back office, la web pública y el panel de administración.</li>
+              <li>Reportes de ejecución con evidencia por paso, publicados automáticamente para todo el equipo.</li>
+              <li>Validación de datos y consultas directas sobre la base con Microsoft SQL Server.</li>
+              <li>Gestión del ciclo de trabajo y seguimiento de defectos en Azure DevOps.</li>
+            </ul>
+          </div>
         </div>
-      </div>
 
+        <div class="exp">
+          <div class="exp-logo">
+            <img src="https://logo.clearbit.com/epidata.net" alt="Logo de Epidata" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=epidata.net';this.classList.add('favicon')">
+            <span class="monograma">EP</span>
+          </div>
+          <div>
+            <div class="exp-cab">
+              <h3>Epidata</h3>
+              <div class="periodo">may. 2024 – feb. 2026</div>
+            </div>
+            <div class="puesto">Analista QA — Proyecto Artear (Todo Noticias)</div>
+            <div class="contexto"><span>Medios digitales</span><span>Remoto</span><span>Alto tráfico</span></div>
+            <ul class="tareas">
+              <li>Testing mobile y desktop sobre los productos digitales del cliente.</li>
+              <li>Análisis de especificaciones y diseño de casos de prueba a partir de los requerimientos.</li>
+              <li>Ejecución de los casos y documentación de resultados.</li>
+              <li>Reporte de fallas con sus respectivas evidencias.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-logo">
+            <img src="https://logo.clearbit.com/pickerexpress.com" alt="Logo de Picker" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&amp;domain=pickerexpress.com';this.classList.add('favicon')">
+            <span class="monograma">PK</span>
+          </div>
+          <div>
+            <div class="exp-cab">
+              <h3>Picker (500 B14)</h3>
+              <div class="periodo">ene. 2023 – may. 2024</div>
+            </div>
+            <div class="puesto">QA Engineer</div>
+            <div class="contexto"><span>Logística / delivery</span><span>Remoto</span><span>Startup</span><span>Scrum</span></div>
+            <ul class="tareas">
+              <li>Combinación de pruebas automatizadas y manuales para cubrir la funcionalidad del sistema de forma eficiente sin comprometer la calidad.</li>
+              <li>Automatización y mantenimiento de suites de pruebas integrales, con mentalidad de mejora continua.</li>
+              <li>Reporte detallado de defectos al equipo, colaborando con el PM en la priorización del backlog.</li>
+              <li>Trabajo junto a diseñadores y PM para traducir la visión del producto en pruebas concretas.</li>
+              <li>Identificación temprana de áreas de riesgo en nuevas soluciones, en conjunto con los equipos de desarrollo.</li>
+              <li>Ejecución de pruebas en entornos productivos post-implementación, junto a TI y operaciones.</li>
+              <li>Participación activa en las ceremonias de Scrum, aportando aclaraciones y desbloqueando al equipo.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-logo"><img src="capturas/logos/utest.png" alt="Logo de uTest"></div>
+          <div>
+            <div class="exp-cab">
+              <h3>uTest</h3>
+              <div class="periodo">feb. 2021 – may. 2024</div>
+            </div>
+            <div class="puesto">Analista QA</div>
+            <div class="contexto"><span>Crowdtesting</span><span>Remoto</span><span>Multi-cliente</span></div>
+            <ul class="tareas">
+              <li>Análisis de especificaciones y diseño de casos de prueba.</li>
+              <li>Ejecución de los casos diseñados sobre productos de distintos clientes e industrias.</li>
+              <li>Pruebas de servicios con SoapUI.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp">
+          <div class="exp-logo"><img src="capturas/logos/enohsa.png" alt="Logo de ENOHSA"></div>
+          <div>
+            <div class="exp-cab">
+              <h3>ENOHSA</h3>
+              <div class="periodo">ene. 2021 – may. 2024</div>
+            </div>
+            <div class="puesto">Analista QA</div>
+            <div class="contexto"><span>Sector público</span><span>Obra pública</span><span>Scrum</span></div>
+            <ul class="tareas">
+              <li>Testing mobile y desktop: análisis de especificaciones, diseño y ejecución de casos de prueba.</li>
+              <li>Documentación y reporte de fallas con sus respectivas evidencias.</li>
+              <li>Pruebas funcionales y no funcionales con Selenium, Selenium IDE, JMeter y Postman.</li>
+              <li>Gestión del trabajo en Jira bajo metodología Scrum.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
 </main>
 
+<section class="cierre" id="contacto">
+  <div class="inner">
+    <h2>¿Necesitás asegurar la calidad de tu producto?</h2>
+    <p>Estoy abierto a nuevas oportunidades. Escribime y coordinamos una charla: puedo mostrarte el código de cualquiera de estos proyectos en detalle.</p>
+    <div class="acciones">
+      <a class="btn-primario" href="mailto:alanherrera2527@gmail.com">alanherrera2527@gmail.com</a>
+      <a class="btn-secundario" href="https://www.linkedin.com/in/alan-herrera-15b8a2215" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn-secundario" href="Alan-Herrera-QA-CV.pdf" download>Descargar CV</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="inner">
-    <div>© 2026 Alan Herrera</div>
-    <div><a href="mailto:alanherrera2527@gmail.com">alanherrera2527@gmail.com</a></div>
+    <div>© 2026 Alan Herrera · Sr. QA Analyst</div>
+    <div>Buenos Aires, Argentina</div>
   </div>
 </footer>
+
+<div id="lightbox"><span class="cerrar">&times;</span><img alt=""></div>
+
+<script>
+  (function () {
+    var lb = document.getElementById('lightbox');
+    var lbImg = lb.querySelector('img');
+    document.querySelectorAll('[data-lightbox]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        lbImg.src = a.getAttribute('href');
+        lbImg.alt = a.querySelector('img').alt;
+        lb.classList.add('abierto');
+      });
+    });
+    function cerrar() { lb.classList.remove('abierto'); lbImg.src = ''; }
+    lb.addEventListener('click', cerrar);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+  })();
+</script>
 
 </body>
 </html>
