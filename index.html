@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alan Herrera — Sr. QA Analyst | Automatización, APIs y Regresión Visual</title>
-<meta name="description" content="Sr. QA Analyst con 5+ años de experiencia en testing funcional, automatización con Selenium y Pytest, testing de APIs y herramientas propias de regresión visual. Reportes de ejecución publicados en vivo.">
+<meta name="description" content="Sr. QA Analyst con 6+ años de experiencia en testing funcional, automatización con Selenium y Pytest, testing de APIs, regresión visual y QA asistido por IA. Reportes de ejecución publicados en vivo.">
 <meta name="author" content="Alan Herrera">
 
 <meta property="og:type" content="website">
@@ -102,6 +102,20 @@
   .stack-col li { font-size: 0.85rem; background: rgba(74,144,217,0.12); border: 1px solid rgba(74,144,217,0.28); padding: 4px 11px; border-radius: 999px; color: var(--texto); }
   .nota-nivel { color: var(--texto-suave); font-size: 0.84rem; margin-top: 16px; }
 
+  /* ---------- IA ---------- */
+  #ia { background: var(--fondo-alt); }
+  .ia-tools { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+  .ia-tool { display: inline-flex; align-items: center; gap: 9px; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 10px; padding: 9px 15px; font-weight: 600; font-size: 0.9rem; }
+  .ia-tool img { width: 20px; height: 20px; border-radius: 4px; background: #fff; }
+  .ia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 16px; }
+  .ia-card { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 20px 22px; }
+  .ia-card h3 { font-size: 0.98rem; margin-bottom: 8px; display: flex; align-items: center; gap: 9px; }
+  .ia-card h3 span { font-size: 1.15rem; }
+  .ia-card p { color: var(--texto-suave); font-size: 0.89rem; }
+  .ia-criterio { margin-top: 20px; background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.28); border-left: 3px solid var(--ambar); border-radius: 10px; padding: 18px 22px; }
+  .ia-criterio h3 { font-size: 0.98rem; margin-bottom: 6px; color: var(--ambar); }
+  .ia-criterio p { color: var(--texto-suave); font-size: 0.9rem; }
+
   /* ---------- PROYECTOS ---------- */
   .proyectos { display: flex; flex-direction: column; gap: 24px; }
   .proy { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 45%) minmax(0, 1fr); }
@@ -151,6 +165,11 @@
   .bug-comparacion .et2 { display: block; font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; }
   .esperado .et2 { color: var(--verde); }
   .obtenido .et2 { color: var(--rojo); }
+  .evidencia { margin-bottom: 14px; }
+  .evidencia .et { font-size: 0.68rem; letter-spacing: 1.1px; text-transform: uppercase; color: var(--azul); font-weight: 700; margin-bottom: 6px; }
+  .evidencia .shot img { aspect-ratio: auto; }
+  .evidencia pre { background: #091320; border: 1px solid var(--borde); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font-family: ui-monospace, Consolas, monospace; font-size: 0.75rem; line-height: 1.55; color: var(--texto-suave); }
+  .evidencia pre b { color: var(--rojo); font-weight: 600; }
   .bug-pie { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--borde); font-size: 0.82rem; color: var(--texto-suave); }
   .bug-pie code { font-family: ui-monospace, Consolas, monospace; font-size: 0.79rem; color: var(--azul-claro); }
 
@@ -196,6 +215,7 @@
     <div class="marca">Alan Herrera <span>· QA</span></div>
     <div class="nav-links">
       <a href="#stack">Stack</a>
+      <a href="#ia">IA</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#bugs">Bugs detectados</a>
       <a href="#experiencia">Experiencia</a>
@@ -208,9 +228,9 @@
 <header class="hero">
   <div class="inner">
     <div class="disponible">Abierto a nuevas oportunidades</div>
-    <h1>Alan Herrera</h1>
-    <div class="rol">Sr. QA Analyst · Automatización, APIs y Regresión Visual</div>
-    <p class="pitch">Más de <strong>5 años</strong> asegurando la calidad de productos web y mobile en banca, turismo, medios y e-commerce. Trabajo con <strong>Selenium y Pytest</strong> sobre pipelines de CI, diseño <strong>suites de API con validación de contrato</strong> y construí desde cero un <strong>motor de regresión visual</strong> propio. Cada proyecto de acá abajo tiene su reporte de ejecución publicado en vivo: nada de capturas viejas, resultados reales que podés abrir ahora.</p>
+    <h1>Sr. QA Analyst</h1>
+    <div class="rol">Automatización · APIs · Regresión Visual · QA asistido por IA</div>
+    <p class="pitch">Más de <strong>6 años</strong> asegurando la calidad de productos web y mobile en banca, turismo, medios, logística y sector público. Trabajo con <strong>Selenium y Pytest</strong> sobre pipelines de CI, diseño <strong>suites de API con validación de contrato</strong> y construí desde cero un <strong>motor de regresión visual</strong> propio. Uso <strong>IA (Claude, Gemini, ChatGPT)</strong> como parte del flujo diario para acelerar el diseño de casos, el mantenimiento de suites y el análisis de fallas. Cada proyecto de acá abajo tiene su reporte de ejecución publicado en vivo: nada de capturas viejas, resultados reales que podés abrir ahora.</p>
     <div class="acciones">
       <a class="btn-primario" href="#proyectos">Ver proyectos →</a>
       <a class="btn-secundario" href="Alan-Herrera-QA-CV.pdf" download>Descargar CV (PDF)</a>
@@ -221,6 +241,10 @@
       <div class="tira-logos">
         <div class="logo-chip"><img src="https://logo.clearbit.com/amv.travel" alt="AMV Travel DMC" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=amv.travel'"></div>
         <div class="logo-chip"><img src="https://logo.clearbit.com/epidata.net" alt="Epidata" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=epidata.net'"></div>
+        <div class="logo-chip"><img src="https://logo.clearbit.com/tn.com.ar" alt="TN — Todo Noticias" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=tn.com.ar'"></div>
+        <div class="logo-chip"><img src="https://logo.clearbit.com/eltrecetv.com.ar" alt="eltrece — Canal 13" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=eltrecetv.com.ar'"></div>
+        <div class="logo-chip"><img src="https://logo.clearbit.com/eldoce.tv" alt="El Doce — Canal 12" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=eldoce.tv'"></div>
+        <div class="logo-chip"><img src="https://logo.clearbit.com/ciudadmagazine.com.ar" alt="Ciudad Magazine" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=ciudadmagazine.com.ar'"></div>
         <div class="logo-chip"><img src="https://logo.clearbit.com/pickerexpress.com" alt="Picker" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&amp;domain=pickerexpress.com'"></div>
         <div class="logo-chip"><img src="capturas/logos/utest.png" alt="uTest"></div>
         <div class="logo-chip"><img src="capturas/logos/enohsa.png" alt="ENOHSA"></div>
@@ -231,10 +255,10 @@
 
 <div class="metricas">
   <div class="inner">
-    <div class="metrica"><div class="n">5+</div><div class="t">años en QA</div></div>
+    <div class="metrica"><div class="n">6+</div><div class="t">años en QA</div></div>
     <div class="metrica"><div class="n">30</div><div class="t">casos automatizados en CI</div></div>
     <div class="metrica"><div class="n">3</div><div class="t">frameworks propios</div></div>
-    <div class="metrica"><div class="n">6</div><div class="t">empresas y equipos</div></div>
+    <div class="metrica"><div class="n">5</div><div class="t">industrias distintas</div></div>
   </div>
 </div>
 
@@ -254,6 +278,7 @@
             <li>Python</li><li>Selenium</li><li>Pytest</li><li>Allure</li>
             <li>Postman</li><li>Testing funcional</li><li>Casos de prueba</li>
             <li>Reporte de defectos</li><li>Jira</li><li>Scrum</li>
+            <li>Claude</li><li>Gemini</li><li>ChatGPT</li>
           </ul>
         </div>
         <div class="stack-col nivel-medio">
@@ -272,6 +297,54 @@
         </div>
       </div>
       <p class="nota-nivel">Todo lo listado en la primera columna está respaldado por código público en los proyectos de abajo.</p>
+    </div>
+  </section>
+
+  <section class="bloque" id="ia">
+    <div class="inner">
+      <div class="encabezado">
+        <div class="kicker">IA aplicada a QA</div>
+        <h2>La IA como parte del flujo de trabajo, no como reemplazo</h2>
+        <p>Integro asistentes de IA en el día a día del testing para cubrir más en menos tiempo. Estas son las tareas concretas en las que me apalanco y, sobre todo, el criterio con el que valido lo que producen.</p>
+      </div>
+
+      <div class="ia-tools">
+        <span class="ia-tool"><img src="https://logo.clearbit.com/anthropic.com" alt="" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=64&amp;domain=claude.ai'">Claude</span>
+        <span class="ia-tool"><img src="https://logo.clearbit.com/gemini.google.com" alt="" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=64&amp;domain=gemini.google.com'">Gemini</span>
+        <span class="ia-tool"><img src="https://logo.clearbit.com/openai.com" alt="" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=64&amp;domain=openai.com'">ChatGPT</span>
+      </div>
+
+      <div class="ia-grid">
+        <div class="ia-card">
+          <h3><span>🧪</span>Diseño de casos y edge cases</h3>
+          <p>Genero variantes de casos a partir de los requerimientos y del historial de defectos, para descubrir escenarios límite que se escapan de la lectura manual de la especificación. Después los reviso y descarto los que no aportan riesgo real.</p>
+        </div>
+        <div class="ia-card">
+          <h3><span>🔧</span>Mantenimiento y refactor de suites</h3>
+          <p>Uso IA para refactorizar código de tests, extraer helpers repetidos y actualizar selectores cuando cambia el front, lo que baja mucho el costo de mantener una suite viva a lo largo del tiempo.</p>
+        </div>
+        <div class="ia-card">
+          <h3><span>🔎</span>Análisis de fallas y logs</h3>
+          <p>Ante una falla, apoyo el diagnóstico pasando el stack trace, los logs y la evidencia para acotar hipótesis rápido y distinguir un bug real de un problema del propio test.</p>
+        </div>
+        <div class="ia-card">
+          <h3><span>📝</span>Redacción de reportes de defectos</h3>
+          <p>Acelero la escritura de reportes claros y reproducibles: pasos, resultado esperado contra obtenido y clasificación de severidad, en un lenguaje que el equipo de desarrollo pueda accionar sin ida y vuelta.</p>
+        </div>
+        <div class="ia-card">
+          <h3><span>📊</span>Cobertura y priorización</h3>
+          <p>Contrasto la cobertura existente contra los flujos críticos del negocio para detectar zonas sin pruebas y decidir qué conviene automatizar primero.</p>
+        </div>
+        <div class="ia-card">
+          <h3><span>⚙️</span>Scripting y tooling propio</h3>
+          <p>Construyo utilidades de apoyo — parsers de resultados, comparadores, generadores de datos de prueba — que sin IA no serían rentables en tiempo para un proyecto puntual.</p>
+        </div>
+      </div>
+
+      <div class="ia-criterio">
+        <h3>El criterio sigue siendo humano</h3>
+        <p>La IA acelera, no decide. Todo caso generado se revisa antes de ejecutarse y ninguna suite se da por buena porque "los tests pasan": un test puede pasar validando lo incorrecto. Antes de automatizar defino qué es importante para el usuario, y valido que la evidencia respalde de verdad lo que el reporte afirma. Ese control es justamente lo que distingue a un QA de una herramienta.</p>
+      </div>
     </div>
   </section>
 
@@ -399,6 +472,15 @@
               <div class="esperado"><span class="et2">Esperado</span>Cada producto muestra su propia imagen; las 6 URLs son distintas.</div>
               <div class="obtenido"><span class="et2">Obtenido</span>Las 6 imágenes apuntan a la misma URL, un recurso inexistente.</div>
             </div>
+            <div class="evidencia">
+              <div class="et">Evidencia</div>
+              <a class="shot" href="capturas/evidencia/bug-01-imagenes.jpg" data-lightbox>
+                <img src="capturas/evidencia/bug-01-imagenes.jpg" alt="Catálogo mostrando la misma imagen repetida en los 6 productos">
+              </a>
+              <pre>AssertionError: Las 6 imágenes apuntan a:
+{'https://www.saucedemo.com/assets/<b>sl-404</b>-Cq1a9k9X.jpg'}
+<b>assert 1 == 6</b></pre>
+            </div>
             <div class="bug-pie">Detectado por <code>test_imagenes_unicas</code> · marcado <code>xfail</code> estricto: si el bug se corrige, el pipeline avisa.</div>
           </div>
         </article>
@@ -423,6 +505,15 @@
               <div class="esperado"><span class="et2">Esperado</span>Con los tres campos válidos, el flujo avanza al resumen con el total de la compra.</div>
               <div class="obtenido"><span class="et2">Obtenido</span>El campo Apellido se vacía al escribir y el flujo queda bloqueado sin avanzar.</div>
             </div>
+            <div class="evidencia">
+              <div class="et">Evidencia</div>
+              <pre>1. Completar el checkout con datos válidos — 40s 642ms
+   [captura adjunta: 1_Checkout]
+
+<b>selenium.common.exceptions.TimeoutException</b>
+El flujo nunca alcanza el resumen de compra:
+se agota la espera sobre el paso siguiente.</pre>
+            </div>
             <div class="bug-pie">Detectado por <code>test_apellido_en_checkout</code> · impide completar la compra: bloqueante para el negocio.</div>
           </div>
         </article>
@@ -445,6 +536,14 @@
             <div class="bug-comparacion">
               <div class="esperado"><span class="et2">Esperado</span>El listado queda en orden alfabético descendente real.</div>
               <div class="obtenido"><span class="et2">Obtenido</span>El orden no cambia; el selector no tiene efecto sobre la grilla.</div>
+            </div>
+            <div class="evidencia">
+              <div class="et">Evidencia</div>
+              <a class="shot" href="capturas/evidencia/bug-03-orden.jpg" data-lightbox>
+                <img src="capturas/evidencia/bug-03-orden.jpg" alt="Diff del listado esperado contra el renderizado tras elegir Name Z to A">
+              </a>
+              <pre>At index 0 diff:
+'Sauce Labs Backpack' <b>≠</b> 'Test.allTheThings() T-Shirt (Red)'</pre>
             </div>
             <div class="bug-pie">Detectado por <code>test_ordenamiento</code> · la validación compara el listado renderizado contra su versión ordenada.</div>
           </div>
@@ -496,10 +595,11 @@
               <h3>Epidata</h3>
               <div class="periodo">may. 2024 – feb. 2026</div>
             </div>
-            <div class="puesto">Analista QA — Proyecto Artear (Todo Noticias)</div>
-            <div class="contexto"><span>Medios digitales</span><span>Remoto</span><span>Alto tráfico</span></div>
+            <div class="puesto">Analista QA — Proyecto Artear (Grupo Clarín)</div>
+            <div class="contexto"><span>Medios digitales</span><span>Remoto</span><span>Alto tráfico</span><span>Multi-marca</span></div>
             <ul class="tareas">
-              <li>Testing mobile y desktop sobre los productos digitales del cliente.</li>
+              <li>QA sobre los sitios y apps de las señales del grupo: <strong>TN (Todo Noticias)</strong>, <strong>eltrece (Canal 13)</strong>, <strong>El Doce (Canal 12)</strong> y <strong>Ciudad Magazine</strong>.</li>
+              <li>Testing mobile y desktop sobre los productos digitales del cliente, con foco en escenarios de alto tráfico y publicación en vivo.</li>
               <li>Análisis de especificaciones y diseño de casos de prueba a partir de los requerimientos.</li>
               <li>Ejecución de los casos y documentación de resultados.</li>
               <li>Reporte de fallas con sus respectivas evidencias.</li>
