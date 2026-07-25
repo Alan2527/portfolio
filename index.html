@@ -447,19 +447,19 @@
     <div class="inner">
       <div class="encabezado">
         <div class="kicker">Detección de defectos</div>
-        <h2>Bugs reales encontrados por estas suites</h2>
-        <p>Defectos que mis propias suites detectan hoy, documentados como los reportaría en un equipo. Todos son verificables: cada uno indica el test que lo expone, y podés abrir el reporte en vivo para ver la evidencia.</p>
+        <h2>Un defecto detectado por cada proyecto</h2>
+        <p>Tres tipos de defecto muy distintos — de interfaz, de contrato de API y de layout — cada uno detectado por una de las suites de arriba y documentado como lo reportaría en un equipo. Todos son verificables: se indica el test que lo expone y podés abrir el reporte en vivo para ver la ejecución.</p>
       </div>
 
       <div class="bugs">
 
         <article class="bug">
           <div class="bug-cab">
-            <span class="bug-id">BUG-01 · Catálogo</span>
+            <span class="bug-id">BUG-01 · E2E · Catálogo</span>
             <span class="sev sev-critica">Severidad crítica</span>
           </div>
           <div class="bug-cuerpo">
-            <h3>Todos los productos del catálogo muestran la misma imagen para un perfil de usuario específico</h3>
+            <h3>Todos los productos del catálogo muestran la misma imagen rota para un perfil de usuario específico</h3>
             <div class="bug-campo">
               <div class="et">Pasos para reproducir</div>
               <ol>
@@ -470,7 +470,7 @@
             </div>
             <div class="bug-comparacion">
               <div class="esperado"><span class="et2">Esperado</span>Cada producto muestra su propia imagen; las 6 URLs son distintas.</div>
-              <div class="obtenido"><span class="et2">Obtenido</span>Las 6 imágenes apuntan a la misma URL, un recurso inexistente.</div>
+              <div class="obtenido"><span class="et2">Obtenido</span>Las 6 imágenes apuntan a la misma URL, un recurso 404.</div>
             </div>
             <div class="evidencia">
               <div class="et">Evidencia</div>
@@ -481,71 +481,70 @@
 {'https://www.saucedemo.com/assets/<b>sl-404</b>-Cq1a9k9X.jpg'}
 <b>assert 1 == 6</b></pre>
             </div>
-            <div class="bug-pie">Detectado por <code>test_imagenes_unicas</code> · marcado <code>xfail</code> estricto: si el bug se corrige, el pipeline avisa.</div>
+            <div class="bug-pie">Suite E2E · <code>test_imagenes_unicas</code> — marcado <code>xfail</code> estricto: si el defecto se corrige, el pipeline avisa.</div>
           </div>
         </article>
 
         <article class="bug">
           <div class="bug-cab">
-            <span class="bug-id">BUG-02 · Checkout</span>
-            <span class="sev sev-critica">Severidad crítica</span>
-          </div>
-          <div class="bug-cuerpo">
-            <h3>El campo Apellido del checkout no retiene el valor ingresado y bloquea la compra</h3>
-            <div class="bug-campo">
-              <div class="et">Pasos para reproducir</div>
-              <ol>
-                <li>Iniciar sesión con el usuario <code>problem_user</code>.</li>
-                <li>Agregar un producto al carrito y avanzar al checkout.</li>
-                <li>Completar Nombre, Apellido y Código Postal con datos válidos.</li>
-                <li>Confirmar para avanzar al resumen.</li>
-              </ol>
-            </div>
-            <div class="bug-comparacion">
-              <div class="esperado"><span class="et2">Esperado</span>Con los tres campos válidos, el flujo avanza al resumen con el total de la compra.</div>
-              <div class="obtenido"><span class="et2">Obtenido</span>El campo Apellido se vacía al escribir y el flujo queda bloqueado sin avanzar.</div>
-            </div>
-            <div class="evidencia">
-              <div class="et">Evidencia</div>
-              <pre>1. Completar el checkout con datos válidos — 40s 642ms
-   [captura adjunta: 1_Checkout]
-
-<b>selenium.common.exceptions.TimeoutException</b>
-El flujo nunca alcanza el resumen de compra:
-se agota la espera sobre el paso siguiente.</pre>
-            </div>
-            <div class="bug-pie">Detectado por <code>test_apellido_en_checkout</code> · impide completar la compra: bloqueante para el negocio.</div>
-          </div>
-        </article>
-
-        <article class="bug">
-          <div class="bug-cab">
-            <span class="bug-id">BUG-03 · Ordenamiento</span>
+            <span class="bug-id">BUG-02 · API · Contrato</span>
             <span class="sev sev-media">Severidad media</span>
           </div>
           <div class="bug-cuerpo">
-            <h3>El selector de ordenamiento del catálogo no reordena los productos</h3>
+            <h3>La autenticación devuelve 200 ante credenciales inválidas en lugar de un código de error</h3>
             <div class="bug-campo">
               <div class="et">Pasos para reproducir</div>
               <ol>
-                <li>Iniciar sesión con el usuario <code>problem_user</code>.</li>
-                <li>En el catálogo, elegir la opción de orden <em>Name (Z to A)</em>.</li>
-                <li>Leer los nombres de los productos en el orden renderizado.</li>
+                <li>Enviar <code>POST /auth</code> con un usuario válido y una contraseña incorrecta.</li>
+                <li>Inspeccionar el código de estado y el cuerpo de la respuesta.</li>
               </ol>
             </div>
             <div class="bug-comparacion">
-              <div class="esperado"><span class="et2">Esperado</span>El listado queda en orden alfabético descendente real.</div>
-              <div class="obtenido"><span class="et2">Obtenido</span>El orden no cambia; el selector no tiene efecto sobre la grilla.</div>
+              <div class="esperado"><span class="et2">Esperado</span><code>401 Unauthorized</code>, siguiendo la convención REST para credenciales rechazadas.</div>
+              <div class="obtenido"><span class="et2">Obtenido</span><code>200 OK</code> con un campo <code>reason</code> en el cuerpo y sin token.</div>
             </div>
             <div class="evidencia">
               <div class="et">Evidencia</div>
-              <a class="shot" href="capturas/evidencia/bug-03-orden.jpg" data-lightbox>
-                <img src="capturas/evidencia/bug-03-orden.jpg" alt="Diff del listado esperado contra el renderizado tras elegir Name Z to A">
-              </a>
-              <pre>At index 0 diff:
-'Sauce Labs Backpack' <b>≠</b> 'Test.allTheThings() T-Shirt (Red)'</pre>
+              <pre>POST /auth
+<b>Status: 200</b>
+
+--- Response ---
+{
+  "reason": "Bad credentials"
+}</pre>
             </div>
-            <div class="bug-pie">Detectado por <code>test_ordenamiento</code> · la validación compara el listado renderizado contra su versión ordenada.</div>
+            <div class="bug-pie">Suite de API · <code>test_credenciales_invalidas</code> — un cliente que valide solo por código de estado interpretaría el login como exitoso. Fijado con assert documentado.</div>
+          </div>
+        </article>
+
+        <article class="bug">
+          <div class="bug-cab">
+            <span class="bug-id">BUG-03 · Regresión visual · Layout</span>
+            <span class="sev sev-critica">Severidad crítica</span>
+          </div>
+          <div class="bug-cuerpo">
+            <h3>Las imágenes del catálogo cambian de ancho entre versiones y rompen la grilla de productos</h3>
+            <div class="bug-campo">
+              <div class="et">Pasos para reproducir</div>
+              <ol>
+                <li>Capturar la versión base del inventario y la versión candidata.</li>
+                <li>Ejecutar la comparación por elemento con tolerancia 0px.</li>
+                <li>Revisar las diferencias clasificadas como <em>tamaño</em>.</li>
+              </ol>
+            </div>
+            <div class="bug-comparacion">
+              <div class="esperado"><span class="et2">Esperado</span>Los <code>img.inventory_item_img</code> conservan su ancho de 159px entre versiones.</div>
+              <div class="obtenido"><span class="et2">Obtenido</span>Los 6 elementos pasan a 262px de ancho, desplazando el resto de la tarjeta.</div>
+            </div>
+            <div class="evidencia">
+              <div class="et">Evidencia</div>
+              <a class="shot" href="capturas/regresion-visual.jpg" data-lightbox>
+                <img src="capturas/regresion-visual.jpg" alt="Informe de regresión visual con las 6 diferencias de tamaño marcadas sobre la captura">
+              </a>
+              <pre>img.inventory_item_img — <b>TAMAÑO · ANCHO</b>
+159px  →  <b>262px</b>   (×6 elementos)</pre>
+            </div>
+            <div class="bug-pie">Motor de regresión visual · detectado por comparación de geometría, no de píxeles: no lo dispara ninguna diferencia de renderizado.</div>
           </div>
         </article>
 
